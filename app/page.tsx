@@ -6,7 +6,6 @@ import { SocialProofTicker } from '@/components/SocialProofTicker';
 import { Hero } from '@/components/Hero';
 import { VideoShowcase } from '@/components/VideoShowcase';
 import { DigitalMarketing } from '@/components/DigitalMarketing';
-import { MockupPreviewer } from '@/components/MockupPreviewer';
 import { ComboKits } from '@/components/ComboKits';
 import { ProductCatalog } from '@/components/ProductCatalog';
 import { BookingForm } from '@/components/BookingForm';
@@ -76,10 +75,7 @@ export default function Home() {
       {/* 5. Comprehensive Digital Marketing Division */}
       <DigitalMarketing />
 
-      {/* 6. Interactive Candidate Mockup Studio */}
-      <MockupPreviewer />
-
-      {/* 7. Sarpanch Victory Combo Packages */}
+      {/* 6. Sarpanch Victory Combo Packages */}
       <ComboKits onSelectCombo={handleSelectCombo} />
 
       {/* 8. Categorized Merchandise Manufacturing Catalog */}

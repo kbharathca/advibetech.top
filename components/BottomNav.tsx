@@ -59,13 +59,13 @@ export function BottomNav() {
           <span className="text-[10px] font-bold">Digital</span>
         </button>
 
-        {/* Mockup Studio */}
+        {/* Call */}
         <button
-          onClick={() => scrollTo('mockup')}
-          className="flex flex-col items-center justify-center gap-1 text-amber-400 hover:text-amber-300 transition active:scale-90"
+          onClick={handleCall}
+          className="flex flex-col items-center justify-center gap-1 text-blue-400 hover:text-blue-300 transition active:scale-90"
         >
-          <Sparkles className="w-5 h-5 fill-current" />
-          <span className="text-[10px] font-bold">Mockup</span>
+          <Phone className="w-5 h-5 fill-current" />
+          <span className="text-[10px] font-medium">Call</span>
         </button>
 
         {/* WhatsApp Book */}

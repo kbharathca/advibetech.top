@@ -57,9 +57,6 @@ export function Header() {
           <button onClick={() => scrollTo('catalog')} className="hover:text-amber-400 transition">
             Products
           </button>
-          <button onClick={() => scrollTo('mockup')} className="hover:text-amber-400 transition">
-            Mockup Studio
-          </button>
           <button onClick={() => scrollTo('digital-marketing')} className="hover:text-cyan-400 transition flex items-center gap-1">
             <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
             <span>Digital Marketing</span>
