@@ -87,7 +87,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="font-sans pb-16 md:pb-0 bg-slate-950 text-slate-100 min-h-screen">
+      <body className="font-sans pb-16 md:pb-0 bg-slate-950 text-slate-100 min-h-screen w-full max-w-full overflow-x-hidden">
         {children}
       </body>
     </html>

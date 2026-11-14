@@ -30,8 +30,8 @@ export function BottomNav() {
   };
 
   return (
-    <div className="fixed bottom-0 inset-x-0 z-50 md:hidden glass-nav pb-[env(safe-area-inset-bottom)]">
-      <div className="grid grid-cols-5 h-16 items-center px-1">
+    <div className="fixed bottom-0 inset-x-0 z-50 md:hidden glass-nav pb-[env(safe-area-inset-bottom)] w-full max-w-full overflow-hidden">
+      <div className="grid grid-cols-5 h-16 items-center px-1 w-full max-w-full">
         {/* Home */}
         <button
           onClick={() => scrollTo('top')}

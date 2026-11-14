@@ -26,10 +26,10 @@ export function Hero({ onBookClick }: HeroProps) {
   };
 
   return (
-    <section className="relative overflow-hidden pt-6 pb-12 px-3 sm:px-6">
+    <section className="relative overflow-hidden pt-6 pb-12 px-3 sm:px-6 w-full max-w-full">
       {/* Background Glows */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-1/3 right-10 w-72 h-72 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 sm:w-96 h-72 sm:h-96 max-w-full bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/3 right-0 sm:right-10 w-64 sm:w-72 h-64 sm:h-72 max-w-full bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -42,7 +42,7 @@ export function Hero({ onBookClick }: HeroProps) {
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
+            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight break-words">
               Reach Every Voter With <br />
               <span className="bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-500 bg-clip-text text-transparent">
                 High-Impact Campaign Merchandise

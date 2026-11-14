@@ -41,7 +41,7 @@ export function ProductCatalog({ onOrderProduct }: ProductCatalogProps) {
   };
 
   return (
-    <section id="catalog" className="py-14 px-3 sm:px-6">
+    <section id="catalog" className="py-14 px-3 sm:px-6 w-full max-w-full overflow-hidden">
       <div className="max-w-6xl mx-auto space-y-6">
         {/* Header */}
         <div className="text-center space-y-2">
@@ -58,7 +58,7 @@ export function ProductCatalog({ onOrderProduct }: ProductCatalogProps) {
         </div>
 
         {/* Category Tabs */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none justify-start sm:justify-center">
+        <div className="w-full max-w-full flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none justify-start sm:justify-center px-0.5">
           {categories.map((cat) => {
             const isActive = activeCategory === cat.id;
             return (

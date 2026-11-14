@@ -75,10 +75,10 @@ export function DigitalMarketing() {
   ];
 
   return (
-    <section id="digital-marketing" className="py-14 px-3 sm:px-6 bg-slate-950 relative overflow-hidden">
+    <section id="digital-marketing" className="py-14 px-3 sm:px-6 bg-slate-950 relative overflow-hidden w-full max-w-full">
       {/* Background Ambient Glows */}
-      <div className="absolute top-1/2 left-0 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-1/3 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-0 w-64 sm:w-96 h-64 sm:h-96 max-w-full bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/3 right-0 w-64 sm:w-96 h-64 sm:h-96 max-w-full bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-6xl mx-auto space-y-10">
         {/* Header */}
@@ -119,17 +119,17 @@ export function DigitalMarketing() {
                 <p className="text-xs sm:text-sm text-slate-200 line-clamp-2 sm:line-clamp-none">
                   Combine ground merchandise with synchronized digital ads on Instagram, Facebook, and WhatsApp to maximize your voter reach and candidate visibility.
                 </p>
-                <div className="pt-2 flex flex-wrap gap-3">
+                <div className="pt-2 flex flex-col sm:flex-row gap-2.5 sm:gap-3 w-full">
                   <button
                     onClick={handleWhatsAppConsult}
-                    className="py-2.5 px-5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs sm:text-sm flex items-center gap-2 shadow-lg shadow-emerald-500/30 transition active:scale-95"
+                    className="w-full sm:w-auto py-2.5 px-4 sm:px-5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/30 transition active:scale-95"
                   >
                     <MessageCircle className="w-4 h-4 fill-current" />
                     <span>Get Digital Campaign Quote</span>
                   </button>
                   <button
                     onClick={handleCall}
-                    className="py-2.5 px-4 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm border border-slate-700 flex items-center gap-2 transition active:scale-95"
+                    className="w-full sm:w-auto py-2.5 px-4 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm border border-slate-700 flex items-center justify-center gap-2 transition active:scale-95"
                   >
                     <Phone className="w-4 h-4 text-amber-400 fill-current" />
                     <span>Call +91 7075209795</span>

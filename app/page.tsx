@@ -42,7 +42,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen flex flex-col bg-slate-950 selection:bg-amber-500 selection:text-slate-950 font-sans">
+    <main className="min-h-screen w-full max-w-full overflow-x-hidden flex flex-col bg-slate-950 selection:bg-amber-500 selection:text-slate-950 font-sans">
       {/* 1. Header */}
       <Header />
 

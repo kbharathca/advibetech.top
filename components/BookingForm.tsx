@@ -76,9 +76,9 @@ _Direct to Owner: SURA DEVI PRASAD (+91 7075209795)_`;
   };
 
   return (
-    <section id="booking" className="py-14 px-3 sm:px-6">
-      <div className="max-w-2xl mx-auto">
-        <div className="rounded-3xl bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 border-2 border-emerald-500/40 p-5 sm:p-8 shadow-2xl relative overflow-hidden">
+    <section id="booking" className="py-14 px-3 sm:px-6 w-full max-w-full overflow-hidden">
+      <div className="max-w-2xl mx-auto w-full">
+        <div className="rounded-3xl bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 border-2 border-emerald-500/40 p-4 sm:p-8 shadow-2xl relative overflow-hidden w-full max-w-full">
           {/* Header */}
           <div className="text-center space-y-2 mb-6">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-bold uppercase tracking-wider">

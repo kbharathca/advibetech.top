@@ -29,25 +29,25 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full glass-panel border-b border-white/10 shadow-lg">
-      <div className="max-w-6xl mx-auto px-3 sm:px-6 py-3 flex items-center justify-between">
+    <header className="sticky top-0 z-40 w-full max-w-full glass-panel border-b border-white/10 shadow-lg overflow-hidden">
+      <div className="max-w-6xl mx-auto px-3 sm:px-6 py-3 flex items-center justify-between gap-2">
         {/* Brand Logo & Name */}
-        <a href="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-700 via-blue-600 to-amber-500 flex items-center justify-center shadow-md shadow-blue-500/20 text-white font-black text-lg group-hover:scale-105 transition-transform">
+        <a href="/" className="flex items-center gap-2.5 sm:gap-3 group min-w-0">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-blue-700 via-blue-600 to-amber-500 flex items-center justify-center shadow-md shadow-blue-500/20 text-white font-black text-base sm:text-lg group-hover:scale-105 transition-transform shrink-0">
             AV
           </div>
-          <div>
+          <div className="min-w-0">
             <div className="flex items-center gap-1.5">
-              <span className="font-extrabold text-base sm:text-lg tracking-tight text-white group-hover:text-amber-400 transition-colors">
+              <span className="font-extrabold text-sm sm:text-lg tracking-tight text-white group-hover:text-amber-400 transition-colors truncate">
                 AdVibe Tech
               </span>
-              <span className="text-[10px] uppercase font-bold px-1.5 py-0.5 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30">
+              <span className="text-[9px] sm:text-[10px] uppercase font-bold px-1.5 py-0.5 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30 shrink-0">
                 Rajampet
               </span>
             </div>
-            <p className="text-[11px] text-slate-300 flex items-center gap-1">
-              <ShieldCheck className="w-3 h-3 text-emerald-400 inline" />
-              <span>Prop: Sura Devi Prasad</span>
+            <p className="text-[10px] sm:text-[11px] text-slate-300 flex items-center gap-1 truncate">
+              <ShieldCheck className="w-3 h-3 text-emerald-400 inline shrink-0" />
+              <span className="truncate">Prop: Sura Devi Prasad</span>
             </p>
           </div>
         </a>
@@ -73,7 +73,7 @@ export function Header() {
         </nav>
 
         {/* Action Buttons */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 shrink-0">
           {/* Quick Call */}
           <button
             onClick={handleCall}

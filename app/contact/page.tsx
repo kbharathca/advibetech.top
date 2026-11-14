@@ -45,7 +45,7 @@ _Sent from Contact page (advibetech.top)_`;
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 font-sans">
+    <div className="min-h-screen w-full max-w-full overflow-x-hidden flex flex-col bg-slate-950 text-slate-100 font-sans">
       <Header />
 
       <main className="flex-1 max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-10">

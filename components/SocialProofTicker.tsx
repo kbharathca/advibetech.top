@@ -42,14 +42,14 @@ export function SocialProofTicker() {
   const current = DISPATCHES[index];
 
   return (
-    <div className="bg-gradient-to-r from-amber-500/15 via-blue-600/15 to-emerald-500/15 border-y border-white/5 py-1.5 px-3">
-      <div className="max-w-6xl mx-auto flex items-center justify-between text-xs gap-2">
-        <div className="flex items-center gap-2 overflow-hidden">
+    <div className="w-full max-w-full overflow-hidden bg-gradient-to-r from-amber-500/15 via-blue-600/15 to-emerald-500/15 border-y border-white/5 py-1.5 px-3">
+      <div className="max-w-6xl mx-auto flex items-center justify-between text-xs gap-2 min-w-0">
+        <div className="flex items-center gap-2 overflow-hidden min-w-0 flex-1">
           <span className="flex h-2 w-2 relative shrink-0">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
           </span>
-          <p className="truncate text-slate-200 font-medium transition-all duration-300">
+          <p className="truncate text-slate-200 font-medium transition-all duration-300 min-w-0">
             {current.msg}
           </p>
         </div>

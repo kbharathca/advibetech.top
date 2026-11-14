@@ -46,7 +46,7 @@ export function VideoShowcase() {
   };
 
   return (
-    <section className="py-10 px-3 sm:px-6 bg-slate-900/40 border-y border-white/5">
+    <section className="py-10 px-3 sm:px-6 bg-slate-900/40 border-y border-white/5 w-full max-w-full overflow-hidden">
       <div className="max-w-4xl mx-auto">
         <div className="text-center space-y-2 mb-6">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold uppercase tracking-wider">
@@ -62,7 +62,7 @@ export function VideoShowcase() {
         </div>
 
         {/* Video Frame */}
-        <div className="relative mx-auto max-w-sm sm:max-w-md aspect-[9/16] rounded-3xl overflow-hidden shadow-2xl border-2 border-slate-700/60 bg-black">
+        <div className="relative mx-auto w-full max-w-[340px] sm:max-w-md aspect-[9/16] rounded-3xl overflow-hidden shadow-2xl border-2 border-slate-700/60 bg-black">
           <video
             ref={videoRef}
             src="/video/campaign-video.mp4"

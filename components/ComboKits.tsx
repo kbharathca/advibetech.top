@@ -18,7 +18,7 @@ export function ComboKits({ onSelectCombo }: ComboKitsProps) {
   };
 
   return (
-    <section id="combos" className="py-14 px-3 sm:px-6 bg-slate-900/40 border-y border-white/5">
+    <section id="combos" className="py-14 px-3 sm:px-6 bg-slate-900/40 border-y border-white/5 w-full max-w-full overflow-hidden">
       <div className="max-w-5xl mx-auto space-y-6">
         <div className="text-center space-y-2">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold uppercase tracking-wider">
@@ -37,10 +37,10 @@ export function ComboKits({ onSelectCombo }: ComboKitsProps) {
           {COMBO_KITS.map((combo) => (
             <div
               key={combo.id}
-              className="relative rounded-3xl bg-gradient-to-b from-slate-900 to-slate-950 border-2 border-slate-800 hover:border-amber-400/50 p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 shadow-xl group"
+              className="relative rounded-3xl bg-gradient-to-b from-slate-900 to-slate-950 border-2 border-slate-800 hover:border-amber-400/50 p-4 sm:p-7 flex flex-col justify-between transition-all duration-300 shadow-xl group"
             >
               {combo.recommendedBadge && (
-                <div className="absolute -top-3.5 right-6 px-3.5 py-1 rounded-full bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-black text-xs uppercase tracking-wider shadow-md shadow-amber-500/30 flex items-center gap-1">
+                <div className="absolute -top-3.5 right-4 sm:right-6 px-3 py-0.5 sm:px-3.5 sm:py-1 rounded-full bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-black text-[11px] sm:text-xs uppercase tracking-wider shadow-md shadow-amber-500/30 flex items-center gap-1">
                   <Sparkles className="w-3 h-3" />
                   <span>{combo.recommendedBadge}</span>
                 </div>

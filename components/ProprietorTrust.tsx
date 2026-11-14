@@ -26,7 +26,7 @@ export function ProprietorTrust() {
   };
 
   return (
-    <section className="py-14 px-3 sm:px-6 bg-slate-900/40 border-t border-white/5">
+    <section className="py-14 px-3 sm:px-6 bg-slate-900/40 border-t border-white/5 w-full max-w-full overflow-hidden">
       <div className="max-w-5xl mx-auto space-y-6">
         <div className="text-center space-y-2">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold uppercase tracking-wider">
@@ -44,7 +44,7 @@ export function ProprietorTrust() {
         {/* Credentials Card */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
           {/* Proprietor Card */}
-          <div className="md:col-span-5 rounded-3xl bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 p-6 flex flex-col justify-between shadow-xl space-y-5">
+          <div className="md:col-span-5 rounded-3xl bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 p-4 sm:p-6 flex flex-col justify-between shadow-xl space-y-5">
             <div className="space-y-4">
               <div className="flex items-center gap-3">
                 <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-amber-500 to-blue-600 flex items-center justify-center text-slate-950 font-black text-xl shadow-lg">
@@ -94,7 +94,7 @@ export function ProprietorTrust() {
           </div>
 
           {/* Address & Logistics Card */}
-          <div className="md:col-span-7 rounded-3xl bg-slate-900/90 border border-slate-800 p-6 flex flex-col justify-between shadow-xl space-y-5">
+          <div className="md:col-span-7 rounded-3xl bg-slate-900/90 border border-slate-800 p-4 sm:p-6 flex flex-col justify-between shadow-xl space-y-5">
             <div className="space-y-3">
               <div className="flex items-center gap-2 text-amber-400 text-xs font-bold uppercase tracking-wider">
                 <MapPin className="w-4 h-4" />
