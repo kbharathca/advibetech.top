@@ -137,8 +137,8 @@ _Sent from Contact page (advibetech.top)_`;
                 <Mail className="w-5 h-5 text-purple-400 shrink-0 mt-0.5" />
                 <div className="space-y-0.5">
                   <span className="font-bold text-white block">Email Support</span>
-                  <a href="mailto:support@advibetech.com" className="text-purple-300 font-bold hover:underline block">
-                    support@advibetech.com
+                  <a href="mailto:contact@advibetech.top" className="text-purple-300 font-bold hover:underline block">
+                    contact@advibetech.top
                   </a>
                   <p className="text-[11px] text-slate-500">For quotations, design files & invoices</p>
                 </div>

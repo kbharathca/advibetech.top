@@ -14,7 +14,7 @@ export function ProprietorTrust() {
 
   const handleEmail = () => {
     triggerLightTap();
-    window.location.href = 'mailto:support@advibetech.com';
+    window.location.href = 'mailto:contact@advibetech.top';
   };
 
   const openGoogleMaps = () => {
@@ -88,7 +88,7 @@ export function ProprietorTrust() {
                 className="w-full py-2.5 px-4 rounded-xl bg-slate-950 border border-slate-700 hover:border-slate-500 text-slate-300 hover:text-white font-semibold text-xs flex items-center justify-center gap-2 transition active:scale-95"
               >
                 <Mail className="w-4 h-4 text-amber-400" />
-                <span>support@advibetech.com</span>
+                <span>contact@advibetech.top</span>
               </button>
             </div>
           </div>

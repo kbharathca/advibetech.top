@@ -124,7 +124,7 @@ export default function RefundPolicyPage() {
             <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-1 text-xs">
               <p><strong className="text-white">Proprietor:</strong> SURA DEVI PRASAD</p>
               <p><strong className="text-white">Phone / WhatsApp:</strong> +91 7075209795</p>
-              <p><strong className="text-white">Email:</strong> support@advibetech.com</p>
+              <p><strong className="text-white">Email:</strong> contact@advibetech.top</p>
               <p><strong className="text-white">Workshop:</strong> Balaji Nagar, Rajampet, Kadapa District, AP</p>
             </div>
           </section>

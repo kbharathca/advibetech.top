@@ -117,7 +117,7 @@ export default function DisclaimerPage() {
             <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-1 text-xs">
               <p><strong className="text-white">Proprietor:</strong> SURA DEVI PRASAD</p>
               <p><strong className="text-white">Direct Phone:</strong> <a href="tel:+917075209795" className="text-blue-400 font-bold underline">+91 7075209795</a></p>
-              <p><strong className="text-white">Email:</strong> <a href="mailto:support@advibetech.com" className="text-amber-400 underline">support@advibetech.com</a></p>
+              <p><strong className="text-white">Email:</strong> <a href="mailto:contact@advibetech.top" className="text-amber-400 underline">contact@advibetech.top</a></p>
               <p><strong className="text-white">Workshop:</strong> 6/279 B, Balaji Nagar, Rajampet, Kadapa District, Andhra Pradesh - 516115</p>
             </div>
           </section>

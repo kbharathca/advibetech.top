@@ -59,7 +59,7 @@ export default function PrivacyPolicyPage() {
               <p><strong className="text-white">Proprietor:</strong> SURA DEVI PRASAD</p>
               <p><strong className="text-white">Workshop Address:</strong> 6/279 B, Balaji Nagar, Rajampet, Kadapa District, Andhra Pradesh - 516115</p>
               <p><strong className="text-white">Phone & WhatsApp:</strong> +91 7075209795</p>
-              <p><strong className="text-white">Email:</strong> support@advibetech.com</p>
+              <p><strong className="text-white">Email:</strong> contact@advibetech.top</p>
             </div>
           </section>
 
@@ -154,7 +154,7 @@ export default function PrivacyPolicyPage() {
             <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-1 text-xs">
               <p><strong className="text-white">Contact Person:</strong> SURA DEVI PRASAD</p>
               <p><strong className="text-white">Phone / WhatsApp:</strong> <a href="tel:+917075209795" className="text-blue-400 underline">+91 7075209795</a></p>
-              <p><strong className="text-white">Email:</strong> <a href="mailto:support@advibetech.com" className="text-amber-400 underline">support@advibetech.com</a></p>
+              <p><strong className="text-white">Email:</strong> <a href="mailto:contact@advibetech.top" className="text-amber-400 underline">contact@advibetech.top</a></p>
               <p><strong className="text-white">Address:</strong> 6/279 B, Balaji Nagar, Rajampet, Kadapa Dist, AP - 516115</p>
             </div>
           </section>

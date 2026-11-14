@@ -56,7 +56,7 @@ export default function RootLayout({
     name: 'AdVibe Tech',
     image: 'https://advibetech.top/assets/digital-marketing-banner.jpg',
     telephone: '+917075209795',
-    email: 'support@advibetech.com',
+    email: 'contact@advibetech.top',
     url: 'https://advibetech.top',
     founder: {
       '@type': 'Person',
