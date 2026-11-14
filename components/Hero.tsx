@@ -43,7 +43,7 @@ export function Hero({ onBookClick }: HeroProps) {
 
             {/* Main Headline */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
-              Win Every Vote With <br />
+              Reach Every Voter With <br />
               <span className="bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-500 bg-clip-text text-transparent">
                 High-Impact Campaign Merchandise
               </span> <br />
@@ -81,7 +81,7 @@ export function Hero({ onBookClick }: HeroProps) {
               <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-2.5 text-center">
                 <span className="block font-black text-amber-400 text-sm sm:text-base">500+</span>
                 <span className="text-[10px] sm:text-[11px] text-slate-400">
-                  Winning Campaigns
+                  Campaigns Equipped
                 </span>
               </div>
               <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-2.5 text-center">

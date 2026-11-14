@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
+import { CookieConsent } from '@/components/CookieConsent';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://advibetech.top'),
@@ -89,6 +90,7 @@ export default function RootLayout({
       </head>
       <body className="font-sans pb-16 md:pb-0 bg-slate-950 text-slate-100 min-h-screen">
         {children}
+        <CookieConsent />
       </body>
     </html>
   );

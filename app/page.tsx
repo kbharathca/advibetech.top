@@ -11,6 +11,7 @@ import { ProductCatalog } from '@/components/ProductCatalog';
 import { BookingForm } from '@/components/BookingForm';
 import { ProprietorTrust } from '@/components/ProprietorTrust';
 import { FAQSection } from '@/components/FAQSection';
+import { Footer } from '@/components/Footer';
 import { BottomNav } from '@/components/BottomNav';
 import { ComboKit } from '@/data/combos';
 import { Product } from '@/data/products';
@@ -93,32 +94,10 @@ export default function Home() {
       {/* 11. FAQ Section */}
       <FAQSection />
 
-      {/* Footer */}
-      <footer className="bg-slate-950 border-t border-slate-800/80 py-10 px-4 text-center text-xs text-slate-400 space-y-4">
-        <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-semibold text-slate-300">
-          <a href="tel:+917075209795" className="hover:text-amber-400 transition">
-            📞 +91 7075209795
-          </a>
-          <span>•</span>
-          <a href="mailto:support@advibetech.com" className="hover:text-amber-400 transition">
-            ✉️ support@advibetech.com
-          </a>
-          <span>•</span>
-          <span>📍 6/279 B, Balaji Nagar, Rajampet, Kadapa Dist, AP - 516115</span>
-        </div>
+      {/* 12. Full Legal, Policy & Advertising Compliance Footer */}
+      <Footer />
 
-        <p className="text-slate-500">
-          © {new Date().getFullYear()} AdVibe Tech (advibetech.top). All rights reserved.
-          <br />
-          Proprietor & Founder: <strong className="text-slate-300">SURA DEVI PRASAD</strong>.
-        </p>
-
-        <p className="text-[11px] text-slate-600 max-w-xl mx-auto">
-          Custom Political Campaign Merchandise & End-to-End Digital Marketing Agency for Gram Panchayat, Municipal, and Assembly Election Campaigns across Andhra Pradesh & Telangana.
-        </p>
-      </footer>
-
-      {/* 12. Persistent Mobile Bottom Dock */}
+      {/* 13. Persistent Mobile Bottom Dock */}
       <BottomNav />
     </main>
   );

@@ -26,7 +26,7 @@ export function ComboKits({ onSelectCombo }: ComboKitsProps) {
             <span>All-In-One Value Packages</span>
           </div>
           <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Sarpanch Campaign Victory Kits
+            Sarpanch Campaign Combo Packages
           </h2>
           <p className="text-xs sm:text-sm text-slate-400 max-w-xl mx-auto leading-relaxed">
             Save time and budget with pre-configured campaign bundles designed for village voter populations across Andhra Pradesh and Telangana.

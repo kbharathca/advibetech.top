@@ -20,7 +20,7 @@ const DISPATCHES = [
     time: '11m ago',
   },
   {
-    msg: '🗳️ New Booking: Sarpanch Victory Mega Kit booked from Kurnool District!',
+    msg: '🗳️ New Booking: Sarpanch Campaign Mega Kit booked from Kurnool District!',
     time: '14m ago',
   },
   {

@@ -32,13 +32,13 @@ export function Header() {
     <header className="sticky top-0 z-40 w-full glass-panel border-b border-white/10 shadow-lg">
       <div className="max-w-6xl mx-auto px-3 sm:px-6 py-3 flex items-center justify-between">
         {/* Brand Logo & Name */}
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-700 via-blue-600 to-amber-500 flex items-center justify-center shadow-md shadow-blue-500/20 text-white font-black text-lg">
+        <a href="/" className="flex items-center gap-3 group">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-700 via-blue-600 to-amber-500 flex items-center justify-center shadow-md shadow-blue-500/20 text-white font-black text-lg group-hover:scale-105 transition-transform">
             AV
           </div>
           <div>
             <div className="flex items-center gap-1.5">
-              <span className="font-extrabold text-base sm:text-lg tracking-tight text-white">
+              <span className="font-extrabold text-base sm:text-lg tracking-tight text-white group-hover:text-amber-400 transition-colors">
                 AdVibe Tech
               </span>
               <span className="text-[10px] uppercase font-bold px-1.5 py-0.5 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30">
@@ -50,23 +50,26 @@ export function Header() {
               <span>Prop: Sura Devi Prasad</span>
             </p>
           </div>
-        </div>
+        </a>
 
         {/* Desktop Navigation Links */}
         <nav className="hidden md:flex items-center gap-6 text-xs font-bold text-slate-300">
-          <button onClick={() => scrollTo('catalog')} className="hover:text-amber-400 transition">
+          <a href="/#catalog" onClick={() => scrollTo('catalog')} className="hover:text-amber-400 transition">
             Products
-          </button>
-          <button onClick={() => scrollTo('digital-marketing')} className="hover:text-cyan-400 transition flex items-center gap-1">
+          </a>
+          <a href="/#digital-marketing" onClick={() => scrollTo('digital-marketing')} className="hover:text-cyan-400 transition flex items-center gap-1">
             <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
             <span>Digital Marketing</span>
-          </button>
-          <button onClick={() => scrollTo('combos')} className="hover:text-amber-400 transition">
-            Victory Kits
-          </button>
-          <button onClick={() => scrollTo('booking')} className="hover:text-emerald-400 transition">
+          </a>
+          <a href="/#combos" onClick={() => scrollTo('combos')} className="hover:text-amber-400 transition">
+            Campaign Combos
+          </a>
+          <a href="/#booking" onClick={() => scrollTo('booking')} className="hover:text-emerald-400 transition">
             Book Order
-          </button>
+          </a>
+          <a href="/contact" className="hover:text-amber-400 transition">
+            Contact
+          </a>
         </nav>
 
         {/* Action Buttons */}

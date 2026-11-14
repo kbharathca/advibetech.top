@@ -117,7 +117,7 @@ export function DigitalMarketing() {
                   Reach Every Voter on Their Smartphone Screen
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-200 line-clamp-2 sm:line-clamp-none">
-                  Combine ground merchandise with synchronized digital ads on Instagram, Facebook, and WhatsApp to maximize your winning margin.
+                  Combine ground merchandise with synchronized digital ads on Instagram, Facebook, and WhatsApp to maximize your voter reach and candidate visibility.
                 </p>
                 <div className="pt-2 flex flex-wrap gap-3">
                   <button

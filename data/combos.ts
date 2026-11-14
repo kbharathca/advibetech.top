@@ -33,7 +33,7 @@ export const COMBO_KITS: ComboKit[] = [
       '500 Glossy Mobile Back Stickers',
       '25 Customized Campaign T-Shirts',
       '50 Cadre Ribbon Badges',
-      '25 Printed Party Scarves / Kanduvas'
+      '25 Printed Campaign Scarves / Kanduvas'
     ],
     itemsTe: [
       '500 ఓవల్ కీచైన్లు (రెండు వైపులా ప్రింటింగ్)',
@@ -52,8 +52,8 @@ export const COMBO_KITS: ComboKit[] = [
   },
   {
     id: 'mega-kit',
-    nameEn: 'Major Panchayat Mega Victory Kit',
-    nameTe: 'మేజర్ పంచాయతీ మెగా విక్టరీ కిట్',
+    nameEn: 'Major Panchayat Mega Campaign Kit',
+    nameTe: 'మేజర్ పంచాయతీ మెగా ప్రచార కిట్',
     taglineEn: 'Maximum impact package designed for large panchayats with massive rally presence.',
     taglineTe: 'పెద్ద పంచాయతీలలో సంపూర్ణ విస్తృత ప్రచారానికి మరియు భారీ ర్యాలీలకు మేలైన ప్యాకేజీ.',
     idealForEn: 'Major Panchayats with 2,500 to 5,000+ voters',
@@ -65,7 +65,7 @@ export const COMBO_KITS: ComboKit[] = [
       '100 Customized Campaign T-Shirts (Collar/Round)',
       '300 Hand Placards / Fan Signs',
       '150 Cadre Ribbon Badges',
-      '100 Printed Party Kanduvas'
+      '100 Printed Campaign Kanduvas'
     ],
     itemsTe: [
       '1,500 ఓవల్ కీచైన్లు',
@@ -73,7 +73,7 @@ export const COMBO_KITS: ComboKit[] = [
       '100 కస్టమ్ ప్రచార టీ-షర్ట్లు (కాలర్/రౌండ్ నెక్)',
       '300 హ్యాండ్ ప్లకార్డ్స్ / విసనకర్రలు',
       '150 కార్యకర్తల రిబ్బన్ బ్యాడ్జెస్',
-      '100 పార్టీ కండువాలు'
+      '100 ప్రచార కండువాలు'
     ],
     defaultPayload: {
       keychains: 1500,
