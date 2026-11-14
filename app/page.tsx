@@ -17,20 +17,10 @@ import { ComboKit } from '@/data/combos';
 import { Product } from '@/data/products';
 
 export default function Home() {
-  const [prefilledSymbol, setPrefilledSymbol] = useState<string>('');
-  const [prefilledQuantities, setPrefilledQuantities] = useState<{
-    keychains?: number;
-    tshirts?: number;
-    stickers?: number;
-    placards?: number;
-    badges?: number;
-  }>({
-    keychains: 500,
-    stickers: 500,
-    tshirts: 25,
-    placards: 0,
-    badges: 50,
-  });
+  const [initialService, setInitialService] = useState<string>(
+    'Campaign Merchandise (Keychains, T-Shirts, Stickers)'
+  );
+  const [initialMessage, setInitialMessage] = useState<string>('');
 
   const scrollToBooking = () => {
     const el = document.getElementById('booking');
@@ -40,22 +30,14 @@ export default function Home() {
   };
 
   const handleSelectCombo = (combo: ComboKit) => {
-    setPrefilledQuantities(combo.defaultPayload);
+    setInitialService('Complete Campaign Combo Package (Merchandise + Digital Ads)');
+    setInitialMessage(`Inquiry for ${combo.nameEn} - Please share package price quote and digital samples.`);
     scrollToBooking();
   };
 
   const handleOrderProduct = (prod: Product) => {
-    if (prod.category === 'keychains') {
-      setPrefilledQuantities((prev) => ({ ...prev, keychains: 500 }));
-    } else if (prod.category === 'tshirts') {
-      setPrefilledQuantities((prev) => ({ ...prev, tshirts: 50 }));
-    } else if (prod.category === 'stickers') {
-      setPrefilledQuantities((prev) => ({ ...prev, stickers: 1000 }));
-    } else if (prod.category === 'placards') {
-      setPrefilledQuantities((prev) => ({ ...prev, placards: 200 }));
-    } else if (prod.category === 'badges') {
-      setPrefilledQuantities((prev) => ({ ...prev, badges: 100 }));
-    }
+    setInitialService('Campaign Merchandise (Keychains, T-Shirts, Stickers)');
+    setInitialMessage(`Inquiry for ${prod.nameEn} (${prod.moq}) - Please share price quote.`);
     scrollToBooking();
   };
 
@@ -82,10 +64,10 @@ export default function Home() {
       {/* 8. Categorized Merchandise Manufacturing Catalog */}
       <ProductCatalog onOrderProduct={handleOrderProduct} />
 
-      {/* 9. Direct-to-Owner WhatsApp Booking Form (with Free-Text Election Symbol Input) */}
+      {/* 9. Simple Direct-to-Owner WhatsApp Booking Form */}
       <BookingForm
-        prefilledSymbol={prefilledSymbol}
-        prefilledQuantities={prefilledQuantities}
+        initialService={initialService}
+        initialMessage={initialMessage}
       />
 
       {/* 10. Proprietor & Manufacturing Unit Trust */}

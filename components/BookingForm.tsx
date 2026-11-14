@@ -1,59 +1,48 @@
 'use client';
 
-import React, { useState } from 'react';
-import { MessageCircle, CheckCircle, ShieldCheck, Sparkles } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { MessageCircle, Sparkles, Send, CheckCircle2, ShieldCheck, Phone } from 'lucide-react';
 import { useHaptic } from '@/hooks/useHaptic';
 
 interface BookingFormProps {
-  prefilledSymbol?: string;
-  prefilledQuantities?: {
-    keychains?: number;
-    tshirts?: number;
-    stickers?: number;
-    placards?: number;
-    badges?: number;
-  };
+  initialService?: string;
+  initialMessage?: string;
 }
 
-export function BookingForm({ prefilledSymbol, prefilledQuantities }: BookingFormProps) {
+export function BookingForm({ initialService, initialMessage }: BookingFormProps) {
   const { triggerLightTap, triggerSuccessHaptic } = useHaptic();
 
-  // Form State
-  const [candidateName, setCandidateName] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [location, setLocation] = useState('');
-  // Free text input for Election Symbol as requested (party/independent/custom)
-  const [symbol, setSymbol] = useState(prefilledSymbol || '');
-  const [partyTheme, setPartyTheme] = useState('Yellow Theme');
-  const [keychainQty, setKeychainQty] = useState(prefilledQuantities?.keychains || 500);
-  const [tshirtQty, setTshirtQty] = useState(prefilledQuantities?.tshirts || 0);
-  const [stickerQty, setStickerQty] = useState(prefilledQuantities?.stickers || 500);
-  const [placardQty, setPlacardQty] = useState(prefilledQuantities?.placards || 0);
-  const [badgeQty, setBadgeQty] = useState(prefilledQuantities?.badges || 0);
-  const [serviceType, setServiceType] = useState('Campaign Merchandise & Printing');
-  const [notes, setNotes] = useState('');
-
-  // UI status
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [serviceType, setServiceType] = useState(
+    initialService || 'Campaign Merchandise (Keychains, T-Shirts, Stickers)'
+  );
+  const [message, setMessage] = useState(initialMessage || '');
   const [submitted, setSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+
+  // Update initialMessage when changed from outside (e.g. clicking a combo or product)
+  useEffect(() => {
+    if (initialMessage) {
+      setMessage(initialMessage);
+    }
+  }, [initialMessage]);
+
+  useEffect(() => {
+    if (initialService) {
+      setServiceType(initialService);
+    }
+  }, [initialService]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!candidateName.trim()) {
-      setErrorMessage('Please enter Candidate / Contact person name');
+    if (!name.trim()) {
+      setErrorMessage('Please enter your name or candidate name');
       return;
     }
-    if (!phoneNumber.trim() || phoneNumber.length < 10) {
-      setErrorMessage('Please enter a valid 10-digit phone number');
-      return;
-    }
-    if (!location.trim()) {
-      setErrorMessage('Please enter Village, Mandal & District details');
-      return;
-    }
-    if (!symbol.trim()) {
-      setErrorMessage('Please enter your allocated Election Symbol (or type "Yet to be allocated")');
+    if (!phone.trim() || phone.replace(/\D/g, '').length < 10) {
+      setErrorMessage('Please enter a valid 10-digit mobile number');
       return;
     }
 
@@ -61,24 +50,18 @@ export function BookingForm({ prefilledSymbol, prefilledQuantities }: BookingFor
     triggerSuccessHaptic();
     setSubmitted(true);
 
-    // Build Formatted English WhatsApp Message
+    // Format WhatsApp inquiry directly to owner Sura Devi Prasad
     const formattedMessage =
-`🗳️ *AdVibe Tech - Campaign Order & Service Booking* 🗳️
+`🗳️ *AdVibe Tech - Direct Booking & Inquiry* 🗳️
 -----------------------------------------
-👤 *Candidate / Contact Name:* ${candidateName.trim()}
-📱 *Phone Number:* ${phoneNumber.trim()}
-📍 *Village, Mandal & District:* ${location.trim()}
-🎯 *Election Symbol:* ${symbol.trim()}
-🎨 *Party / Color Theme:* ${partyTheme}
-💼 *Service Selected:* ${serviceType}
-
-📦 *Required Merchandise & Quantities:*
-${keychainQty > 0 ? `• Double-Sided Oval Keychains: ${keychainQty} Pcs (MOQ 500)\n` : ''}${stickerQty > 0 ? `• Glossy Mobile Stickers: ${stickerQty} Pcs\n` : ''}${tshirtQty > 0 ? `• Campaign T-Shirts: ${tshirtQty} Pcs\n` : ''}${placardQty > 0 ? `• Hand Placards / Fan Signs: ${placardQty} Pcs\n` : ''}${badgeQty > 0 ? `• Cadre Badges & Scarves: ${badgeQty} Pcs\n` : ''}
-${notes.trim() ? `📝 *Special Instructions / Deadline:* ${notes.trim()}\n` : ''}-----------------------------------------
+👤 *Name / Candidate:* ${name.trim()}
+📱 *Mobile Number:* ${phone.trim()}
+💼 *Service Required:* ${serviceType}
+📝 *Requirement / Message:* ${message.trim() || 'Please share pricing, design mockups, and bulk discount details.'}
+-----------------------------------------
 _Sent via Official Website (advibetech.top)_
 _Direct to Owner: SURA DEVI PRASAD (+91 7075209795)_`;
 
-    // Open WhatsApp directly to owner
     const encoded = encodeURIComponent(formattedMessage);
     const waUrl = `https://api.whatsapp.com/send?phone=917075209795&text=${encoded}`;
 
@@ -87,277 +70,169 @@ _Direct to Owner: SURA DEVI PRASAD (+91 7075209795)_`;
     }, 400);
   };
 
+  const handleReset = () => {
+    triggerLightTap();
+    setSubmitted(false);
+  };
+
   return (
     <section id="booking" className="py-14 px-3 sm:px-6">
-      <div className="max-w-4xl mx-auto">
-        <div className="rounded-3xl bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 border-2 border-emerald-500/40 p-5 sm:p-10 shadow-2xl relative overflow-hidden">
+      <div className="max-w-2xl mx-auto">
+        <div className="rounded-3xl bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 border-2 border-emerald-500/40 p-5 sm:p-8 shadow-2xl relative overflow-hidden">
           {/* Header */}
-          <div className="text-center space-y-2 mb-8">
+          <div className="text-center space-y-2 mb-6">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-bold uppercase tracking-wider">
               <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Direct WhatsApp Order & Quote Form</span>
+              <span>Quick WhatsApp Quote & Booking</span>
             </div>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
-              Book Your Order With Sura Devi Prasad
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+              Get an Instant Quote
             </h2>
-            <p className="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto leading-relaxed">
-              Fill in your details below. Your complete order summary will be compiled and sent directly to owner Sura Devi Prasad (+91 7075209795) on WhatsApp for fast confirmation and digital samples.
+            <p className="text-xs sm:text-sm text-slate-300 max-w-md mx-auto leading-relaxed">
+              Fill in your details below. Your request will open directly in WhatsApp to owner Sura Devi Prasad for immediate pricing and samples.
             </p>
           </div>
 
-          {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {errorMessage && (
-              <div className="p-3.5 rounded-xl bg-red-900/60 border border-red-500/50 text-red-200 text-xs font-bold text-center">
-                {errorMessage}
+          {/* Form / Submitted Success View */}
+          {submitted ? (
+            <div className="p-6 sm:p-8 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-center space-y-4">
+              <div className="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto shadow-lg">
+                <CheckCircle2 className="w-8 h-8" />
               </div>
-            )}
-
-            {/* Row 1: Candidate Name & Phone */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="space-y-1.5">
-                <label className="text-xs font-bold text-slate-300">
-                  Candidate / Contact Name <span className="text-emerald-400">*</span>
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={candidateName}
-                  onChange={(e) => setCandidateName(e.target.value)}
-                  placeholder="e.g. Ramesh Babu / Suresh Kumar"
-                  className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-400 transition"
-                />
-              </div>
-
-              <div className="space-y-1.5">
-                <label className="text-xs font-bold text-slate-300">
-                  WhatsApp Contact Number <span className="text-emerald-400">*</span>
-                </label>
-                <input
-                  type="tel"
-                  required
-                  value={phoneNumber}
-                  onChange={(e) => setPhoneNumber(e.target.value)}
-                  placeholder="9XXXXXXXXX"
-                  className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-400 transition"
-                />
-              </div>
-            </div>
-
-            {/* Row 2: Location (Village / Mandal / District) */}
-            <div className="space-y-1.5">
-              <label className="text-xs font-bold text-slate-300">
-                Village, Mandal & District <span className="text-emerald-400">*</span>
-              </label>
-              <input
-                type="text"
-                required
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
-                placeholder="e.g. Balapalle, Rajampet Mandal, Kadapa District"
-                className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-400 transition"
-              />
-            </div>
-
-            {/* Row 3: Election Symbol (FREE-TEXT INPUT FIELD) & Party Theme */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="space-y-1.5">
-                <label className="text-xs font-bold text-slate-300 flex items-center justify-between">
-                  <span>Election Symbol (Type Any Symbol) <span className="text-emerald-400">*</span></span>
-                  <span className="text-[10px] text-amber-400 font-normal">Any Party or Independent</span>
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={symbol}
-                  onChange={(e) => setSymbol(e.target.value)}
-                  placeholder="e.g. Cot, Scissors, Kite, Ring, Tractor, Glass, Fan..."
-                  className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-400 transition"
-                />
-              </div>
-
-              <div className="space-y-1.5">
-                <label className="text-xs font-bold text-slate-300">
-                  Color & Banner Theme
-                </label>
-                <select
-                  value={partyTheme}
-                  onChange={(e) => {
-                    triggerLightTap();
-                    setPartyTheme(e.target.value);
-                  }}
-                  className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 text-white text-sm focus:outline-none focus:border-emerald-400 transition"
-                >
-                  <option value="Yellow Theme">Yellow Theme</option>
-                  <option value="Blue & Green Theme">Blue & Green Theme</option>
-                  <option value="Red & White Theme">Red & White Theme</option>
-                  <option value="Tricolor National Theme">Tricolor Theme</option>
-                  <option value="Custom Independent Theme">Custom Independent Colorway</option>
-                </select>
-              </div>
-            </div>
-
-            {/* Row 4: Service Type Selection */}
-            <div className="space-y-1.5">
-              <label className="text-xs font-bold text-slate-300">
-                Primary Service Required
-              </label>
-              <select
-                value={serviceType}
-                onChange={(e) => {
-                  triggerLightTap();
-                  setServiceType(e.target.value);
-                }}
-                className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 text-white text-sm focus:outline-none focus:border-emerald-400 transition"
-              >
-                <option value="Campaign Merchandise & Printing">Election Campaign Merchandise & Printing</option>
-                <option value="Digital Marketing & Social Media Ads">Digital Marketing, Meta Ads & Video Reels</option>
-                <option value="Combo: Merchandise + Digital Marketing">Combo: Full Physical Merchandise + Digital Marketing Campaign</option>
-              </select>
-            </div>
-
-            {/* Row 5: Merchandise Quantities Configurator */}
-            <div className="space-y-3 pt-2">
-              <label className="text-xs font-bold uppercase tracking-wider text-amber-400 block">
-                Required Quantities (Enter 0 if not needed):
-              </label>
-
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                {/* Keychains */}
-                <div className="bg-slate-950 p-3 rounded-2xl border border-slate-800 space-y-1">
-                  <span className="text-[11px] font-bold text-slate-300 block truncate">
-                    Oval Keychains
-                  </span>
-                  <span className="text-[9px] text-emerald-400 block">MOQ 500 pcs</span>
-                  <input
-                    type="number"
-                    min="0"
-                    step="100"
-                    value={keychainQty}
-                    onChange={(e) => setKeychainQty(Math.max(0, parseInt(e.target.value) || 0))}
-                    className="w-full px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-white font-extrabold text-sm focus:outline-none focus:border-amber-400"
-                  />
-                </div>
-
-                {/* Stickers */}
-                <div className="bg-slate-950 p-3 rounded-2xl border border-slate-800 space-y-1">
-                  <span className="text-[11px] font-bold text-slate-300 block truncate">
-                    Mobile Stickers
-                  </span>
-                  <span className="text-[9px] text-blue-400 block">Glossy Vinyl</span>
-                  <input
-                    type="number"
-                    min="0"
-                    step="100"
-                    value={stickerQty}
-                    onChange={(e) => setStickerQty(Math.max(0, parseInt(e.target.value) || 0))}
-                    className="w-full px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-white font-extrabold text-sm focus:outline-none focus:border-amber-400"
-                  />
-                </div>
-
-                {/* T-Shirts */}
-                <div className="bg-slate-950 p-3 rounded-2xl border border-slate-800 space-y-1">
-                  <span className="text-[11px] font-bold text-slate-300 block truncate">
-                    Campaign T-Shirts
-                  </span>
-                  <span className="text-[9px] text-amber-400 block">Collar / Round Neck</span>
-                  <input
-                    type="number"
-                    min="0"
-                    step="10"
-                    value={tshirtQty}
-                    onChange={(e) => setTshirtQty(Math.max(0, parseInt(e.target.value) || 0))}
-                    className="w-full px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-white font-extrabold text-sm focus:outline-none focus:border-amber-400"
-                  />
-                </div>
-
-                {/* Placards */}
-                <div className="bg-slate-950 p-3 rounded-2xl border border-slate-800 space-y-1">
-                  <span className="text-[11px] font-bold text-slate-300 block truncate">
-                    Hand Placards & Fans
-                  </span>
-                  <span className="text-[9px] text-slate-400 block">Rally Signs</span>
-                  <input
-                    type="number"
-                    min="0"
-                    step="50"
-                    value={placardQty}
-                    onChange={(e) => setPlacardQty(Math.max(0, parseInt(e.target.value) || 0))}
-                    className="w-full px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-white font-extrabold text-sm focus:outline-none focus:border-amber-400"
-                  />
-                </div>
-
-                {/* Badges / Kanduvas */}
-                <div className="bg-slate-950 p-3 rounded-2xl border border-slate-800 space-y-1 col-span-2 sm:col-span-1">
-                  <span className="text-[11px] font-bold text-slate-300 block truncate">
-                    Cadre Badges & Scarves
-                  </span>
-                  <span className="text-[9px] text-purple-400 block">Ribbon Rosettes</span>
-                  <input
-                    type="number"
-                    min="0"
-                    step="50"
-                    value={badgeQty}
-                    onChange={(e) => setBadgeQty(Math.max(0, parseInt(e.target.value) || 0))}
-                    className="w-full px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-white font-extrabold text-sm focus:outline-none focus:border-amber-400"
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Row 6: Notes & Delivery Requirements */}
-            <div className="space-y-1.5">
-              <label className="text-xs font-bold text-slate-300">
-                Special Delivery Instructions or Campaign Details
-              </label>
-              <textarea
-                rows={2}
-                value={notes}
-                onChange={(e) => setNotes(e.target.value)}
-                placeholder="e.g. Urgent delivery needed in 3 days, T-shirt sizes (L: 30, XL: 20), specific design requests..."
-                className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-400 transition"
-              />
-            </div>
-
-            {/* Submit Button */}
-            <button
-              type="submit"
-              className="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-emerald-500 via-emerald-600 to-green-600 hover:from-emerald-400 hover:to-emerald-500 text-slate-950 font-black text-sm sm:text-base shadow-xl shadow-emerald-500/30 flex items-center justify-center gap-3 transition-all active:scale-95 border border-emerald-300/40"
-            >
-              <MessageCircle className="w-5 h-5 fill-current" />
-              <span>Send Order Direct to Sura Devi Prasad on WhatsApp (+91 7075209795)</span>
-            </button>
-
-            {/* Trust Assurance */}
-            <div className="flex items-center justify-center gap-2 text-xs text-slate-400 pt-1">
-              <ShieldCheck className="w-4 h-4 text-emerald-400" />
-              <span>
-                Direct manufacturer dispatch from Rajampet, Kadapa. 100% genuine factory prices with zero middleman commissions.
-              </span>
-            </div>
-          </form>
-
-          {/* Success Toast Modal Overlay */}
-          {submitted && (
-            <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 flex items-center justify-center p-4">
-              <div className="bg-slate-900 border border-emerald-500/50 rounded-3xl p-6 max-w-sm w-full text-center space-y-4 shadow-2xl">
-                <div className="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto border border-emerald-500/40">
-                  <CheckCircle className="w-8 h-8" />
-                </div>
-                <h3 className="text-lg font-black text-white">
-                  Order Message Generated!
-                </h3>
-                <p className="text-xs text-slate-300 leading-relaxed">
-                  WhatsApp is opening with your formatted requirements. Simply tap Send to connect directly with owner Sura Devi Prasad (+91 7075209795).
+              <div className="space-y-1">
+                <h3 className="text-lg sm:text-xl font-bold text-white">Opening WhatsApp...</h3>
+                <p className="text-xs text-slate-300 max-w-sm mx-auto">
+                  Your inquiry has been formatted and directed to <strong className="text-white">+91 7075209795</strong>.
                 </p>
-                <button
-                  onClick={() => setSubmitted(false)}
-                  className="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs"
+              </div>
+
+              <div className="pt-2 flex flex-col sm:flex-row gap-2.5 justify-center">
+                <a
+                  href={`https://wa.me/917075209795`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg transition active:scale-95"
                 >
-                  Close
+                  <MessageCircle className="w-4 h-4 fill-current" />
+                  <span>Open WhatsApp Directly</span>
+                </a>
+                <button
+                  type="button"
+                  onClick={handleReset}
+                  className="px-4 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold text-xs transition"
+                >
+                  Submit Another Inquiry
                 </button>
               </div>
             </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-4">
+              {errorMessage && (
+                <div className="p-3 rounded-xl bg-red-900/60 border border-red-500/50 text-red-200 text-xs font-semibold text-center">
+                  {errorMessage}
+                </div>
+              )}
+
+              {/* 1. Name */}
+              <div className="space-y-1.5">
+                <label className="text-xs font-bold text-slate-300 flex items-center justify-between">
+                  <span>Your Name / Candidate Name <span className="text-emerald-400">*</span></span>
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="e.g. Ramesh Reddy"
+                  className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-400 transition"
+                />
+              </div>
+
+              {/* 2. Mobile Number */}
+              <div className="space-y-1.5">
+                <label className="text-xs font-bold text-slate-300 flex items-center justify-between">
+                  <span>Mobile Number (WhatsApp) <span className="text-emerald-400">*</span></span>
+                  <span className="text-[10px] text-slate-400">10-digit number</span>
+                </label>
+                <div className="relative">
+                  <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400">
+                    +91
+                  </span>
+                  <input
+                    type="tel"
+                    required
+                    maxLength={10}
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value.replace(/\D/g, ''))}
+                    placeholder="9876543210"
+                    className="w-full pl-12 pr-4 py-3 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-400 transition"
+                  />
+                </div>
+              </div>
+
+              {/* 3. Type of Service Required */}
+              <div className="space-y-1.5">
+                <label className="text-xs font-bold text-slate-300">
+                  Select Type of Service Required <span className="text-emerald-400">*</span>
+                </label>
+                <select
+                  value={serviceType}
+                  onChange={(e) => {
+                    triggerLightTap();
+                    setServiceType(e.target.value);
+                  }}
+                  className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 text-white text-sm focus:outline-none focus:border-emerald-400 transition"
+                >
+                  <option value="Campaign Merchandise (Keychains, T-Shirts, Stickers)">
+                    Campaign Merchandise (Keychains, T-Shirts, Stickers, Placards)
+                  </option>
+                  <option value="Digital Marketing & Social Media Ads (Meta, Instagram, WhatsApp)">
+                    Digital Marketing & Social Media Ads (Meta, Instagram, WhatsApp)
+                  </option>
+                  <option value="Complete Campaign Combo Package (Merchandise + Digital Ads)">
+                    Complete Campaign Combo Package (Merchandise + Digital Ads)
+                  </option>
+                  <option value="Other Custom Requirement / General Inquiry">
+                    Other Custom Requirement / General Inquiry
+                  </option>
+                </select>
+              </div>
+
+              {/* 4. Message / Requirement */}
+              <div className="space-y-1.5">
+                <label className="text-xs font-bold text-slate-300">
+                  Message / Requirement Details
+                </label>
+                <textarea
+                  rows={3}
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  placeholder="e.g. Need 1,000 double-sided keychains and 50 T-shirts for upcoming panchayat elections in Kadapa district."
+                  className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-400 transition"
+                />
+              </div>
+
+              {/* Submit Button */}
+              <div className="pt-2">
+                <button
+                  type="submit"
+                  className="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-emerald-500 via-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-slate-950 font-black text-sm sm:text-base shadow-lg shadow-emerald-500/25 flex items-center justify-center gap-2.5 transition active:scale-95 border border-emerald-300/30"
+                >
+                  <Send className="w-4 h-4 fill-current" />
+                  <span>Send Direct WhatsApp Inquiry</span>
+                </button>
+              </div>
+
+              {/* Trust Footer */}
+              <div className="pt-2 flex items-center justify-center gap-4 text-[11px] text-slate-400">
+                <span className="flex items-center gap-1">
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>Direct to Sura Devi Prasad</span>
+                </span>
+                <span>•</span>
+                <span>Replies in 5 minutes</span>
+              </div>
+            </form>
           )}
         </div>
       </div>
