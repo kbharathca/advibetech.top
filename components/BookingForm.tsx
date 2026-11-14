@@ -154,7 +154,7 @@ _Direct to Owner: SURA DEVI PRASAD (+91 7075209795)_`;
                 required
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
-                placeholder="e.g. Balapalle, Rajampet Mandal, YSR Kadapa District"
+                placeholder="e.g. Balapalle, Rajampet Mandal, Kadapa District"
                 className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-400 transition"
               />
             </div>
@@ -164,7 +164,7 @@ _Direct to Owner: SURA DEVI PRASAD (+91 7075209795)_`;
               <div className="space-y-1.5">
                 <label className="text-xs font-bold text-slate-300 flex items-center justify-between">
                   <span>Election Symbol (Type Any Symbol) <span className="text-emerald-400">*</span></span>
-                  <span className="text-[10px] text-amber-400 font-normal">Party or Independent</span>
+                  <span className="text-[10px] text-amber-400 font-normal">Any Party or Independent</span>
                 </label>
                 <input
                   type="text"
@@ -178,7 +178,7 @@ _Direct to Owner: SURA DEVI PRASAD (+91 7075209795)_`;
 
               <div className="space-y-1.5">
                 <label className="text-xs font-bold text-slate-300">
-                  Color / Party Theme
+                  Color & Banner Theme
                 </label>
                 <select
                   value={partyTheme}
@@ -188,9 +188,9 @@ _Direct to Owner: SURA DEVI PRASAD (+91 7075209795)_`;
                   }}
                   className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 text-white text-sm focus:outline-none focus:border-emerald-400 transition"
                 >
-                  <option value="Yellow Theme (TDP Style)">Yellow Theme</option>
-                  <option value="Blue & Green Theme (YSR Style)">Blue & Green Theme</option>
-                  <option value="Red & White Theme (JSP Style)">Red & White Theme</option>
+                  <option value="Yellow Theme">Yellow Theme</option>
+                  <option value="Blue & Green Theme">Blue & Green Theme</option>
+                  <option value="Red & White Theme">Red & White Theme</option>
                   <option value="Tricolor National Theme">Tricolor Theme</option>
                   <option value="Custom Independent Theme">Custom Independent Colorway</option>
                 </select>

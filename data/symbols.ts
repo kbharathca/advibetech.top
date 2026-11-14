@@ -20,9 +20,9 @@ export const ELECTION_SYMBOLS: ElectionSymbol[] = [
 ];
 
 export const PARTY_THEMES = [
-  { id: 'yellow', name: 'Yellow (TDP Theme)', bgClass: 'from-yellow-400 to-amber-500', textClass: 'text-yellow-950', badge: 'bg-yellow-400 text-yellow-950' },
-  { id: 'bluegreen', name: 'Blue & Green (YSR Theme)', bgClass: 'from-blue-600 via-white to-green-600', textClass: 'text-blue-950', badge: 'bg-blue-600 text-white' },
-  { id: 'redwhite', name: 'Red & White (Jana Sena Theme)', bgClass: 'from-red-600 to-rose-700', textClass: 'text-white', badge: 'bg-red-600 text-white' },
+  { id: 'yellow', name: 'Yellow Gold Theme', bgClass: 'from-yellow-400 to-amber-500', textClass: 'text-yellow-950', badge: 'bg-yellow-400 text-yellow-950' },
+  { id: 'bluegreen', name: 'Blue & Green Theme', bgClass: 'from-blue-600 via-white to-green-600', textClass: 'text-blue-950', badge: 'bg-blue-600 text-white' },
+  { id: 'redwhite', name: 'Red & White Theme', bgClass: 'from-red-600 to-rose-700', textClass: 'text-white', badge: 'bg-red-600 text-white' },
   { id: 'tricolor', name: 'Tricolor Theme', bgClass: 'from-orange-500 via-white to-green-600', textClass: 'text-slate-900', badge: 'bg-orange-500 text-white' },
-  { id: 'royal', name: 'Royal Gold & Navy', bgClass: 'from-blue-900 to-indigo-950', textClass: 'text-amber-400', badge: 'bg-blue-900 text-amber-400' },
+  { id: 'royal', name: 'Royal Gold & Navy Theme', bgClass: 'from-blue-900 to-indigo-950', textClass: 'text-amber-400', badge: 'bg-blue-900 text-amber-400' },
 ];

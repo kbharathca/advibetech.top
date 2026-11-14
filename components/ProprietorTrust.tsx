@@ -37,7 +37,7 @@ export function ProprietorTrust() {
             Proprietor & Manufacturing Unit
           </h2>
           <p className="text-xs sm:text-sm text-slate-400 max-w-xl mx-auto leading-relaxed">
-            Direct election merchandise production and wholesale dispatch based in Rajampet, YSR Kadapa District, Andhra Pradesh.
+            Direct election merchandise production and wholesale dispatch based in Rajampet, Kadapa District, Andhra Pradesh.
           </p>
         </div>
 
