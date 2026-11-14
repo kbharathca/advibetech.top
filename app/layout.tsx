@@ -3,31 +3,33 @@ import './globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://advibetech.top'),
-  title: 'AdVibe Tech - Election Campaign Merchandise | Rajampet, Kadapa',
-  description: 'Custom Election Campaign T-Shirts, Double-Sided Keychains (MOQ 500), Mobile Stickers, Placards & Badges by Sura Devi Prasad (+91 7075209795), Rajampet, Kadapa.',
+  title: 'AdVibe Tech - Campaign Merchandise & Digital Marketing | Rajampet, Kadapa',
+  description: 'Custom Election Campaign T-Shirts, Double-Sided Keychains (MOQ 500), Mobile Stickers, Placards & Digital Marketing by Sura Devi Prasad (+91 7075209795), Rajampet, Kadapa.',
   keywords: [
     'election campaign merchandise Rajampet',
     'sarpanch keychains printing Kadapa',
     'panchayat election t shirts Andhra Pradesh',
     'election mobile stickers printing',
+    'political digital marketing agency Andhra Pradesh',
+    'Meta ads election campaign Kadapa',
     'AdVibe Tech Rajampet',
     'Sura Devi Prasad',
   ],
   authors: [{ name: 'Sura Devi Prasad' }],
   openGraph: {
-    title: 'AdVibe Tech - Election Campaign Merchandise | Call +91 7075209795',
-    description: 'Custom Sarpanch & Panchayat Election Keychains (MOQ 500), T-Shirts, Mobile Stickers & Placards with your candidate photo & symbol.',
+    title: 'AdVibe Tech - Election Merchandise & Digital Marketing | Call +91 7075209795',
+    description: 'Custom Election Keychains (MOQ 500), T-Shirts, Stickers & Targeted Digital Marketing Ads by Sura Devi Prasad, Rajampet.',
     url: 'https://advibetech.top',
     siteName: 'AdVibe Tech',
     images: [
       {
-        url: '/assets/hero-presenter.jpg',
+        url: '/assets/digital-marketing-banner.jpg',
         width: 1200,
         height: 630,
-        alt: 'AdVibe Tech Election Merchandise',
+        alt: 'AdVibe Tech Election Merchandise and Digital Marketing',
       },
     ],
-    locale: 'te_IN',
+    locale: 'en_IN',
     type: 'website',
   },
   manifest: '/manifest.json',
@@ -51,7 +53,7 @@ export default function RootLayout({
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     name: 'AdVibe Tech',
-    image: 'https://advibetech.top/assets/hero-presenter.jpg',
+    image: 'https://advibetech.top/assets/digital-marketing-banner.jpg',
     telephone: '+917075209795',
     email: 'support@advibetech.com',
     url: 'https://advibetech.top',
@@ -67,17 +69,17 @@ export default function RootLayout({
       postalCode: '516115',
       addressCountry: 'IN',
     },
-    description: 'Manufacturer of political and election campaign promotional merchandise including custom keychains, t-shirts, stickers and placards.',
+    description: 'Manufacturer of political campaign merchandise (keychains, t-shirts, stickers) and provider of hyper-local digital marketing, Meta ads and video campaign management.',
     priceRange: '₹₹',
   };
 
   return (
-    <html lang="te" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Telugu:wght@400;500;600;700;800;900&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
           rel="stylesheet"
         />
         <script
@@ -85,7 +87,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="font-sans pb-16 sm:pb-0 bg-slate-950 text-slate-100 min-h-screen">
+      <body className="font-sans pb-16 md:pb-0 bg-slate-950 text-slate-100 min-h-screen">
         {children}
       </body>
     </html>

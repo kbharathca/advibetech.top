@@ -1,14 +1,10 @@
 'use client';
 
 import React, { useRef, useState } from 'react';
-import { Play, Pause, Volume2, VolumeX, Sparkles, MessageCircle, Phone } from 'lucide-react';
+import { Play, Volume2, VolumeX, Sparkles, MessageCircle, Phone } from 'lucide-react';
 import { useHaptic } from '@/hooks/useHaptic';
 
-interface VideoShowcaseProps {
-  lang: 'te' | 'en';
-}
-
-export function VideoShowcase({ lang }: VideoShowcaseProps) {
+export function VideoShowcase() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
@@ -34,26 +30,22 @@ export function VideoShowcase({ lang }: VideoShowcaseProps) {
   };
 
   return (
-    <section className="py-8 px-3 sm:px-6 bg-slate-900/40 border-y border-white/5">
+    <section className="py-10 px-3 sm:px-6 bg-slate-900/40 border-y border-white/5">
       <div className="max-w-4xl mx-auto">
         <div className="text-center space-y-2 mb-6">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold uppercase tracking-wider">
             <Sparkles className="w-3.5 h-3.5 text-blue-400" />
-            <span>{lang === 'te' ? 'వీడియో పరిచయం & డెమో' : 'Live Product Demonstration'}</span>
+            <span>Live Production Walkthrough</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
-            {lang === 'te'
-              ? 'మా ప్రచార సామగ్రి లైవ్ డెమో చూడండి'
-              : 'Watch Our Real Campaign Products Demo'}
+            Watch Our Real Campaign Products Video
           </h2>
           <p className="text-xs sm:text-sm text-slate-400 max-w-xl mx-auto">
-            {lang === 'te'
-              ? 'సర్పంచ్ ఎన్నికల అభ్యర్థుల కోసం రూపొందించిన కీచైన్లు, టీ-షర్ట్లు, మొబైల్ స్టిక్కర్లు మరియు ప్లకార్డ్స్ ప్రత్యక్ష ప్రదర్శన.'
-              : 'Direct video walkthrough showing our manufactured election keychains, custom t-shirts, mobile stickers and placards.'}
+            Direct video demonstration of manufactured election keychains, polo t-shirts, mobile stickers, placards, and badges.
           </p>
         </div>
 
-        {/* Video Container Styled as a Premium Mobile Reel */}
+        {/* Video Frame */}
         <div className="relative mx-auto max-w-sm sm:max-w-md aspect-[9/16] rounded-3xl overflow-hidden shadow-2xl border-2 border-slate-700/60 bg-black">
           <video
             ref={videoRef}
@@ -69,7 +61,7 @@ export function VideoShowcase({ lang }: VideoShowcaseProps) {
           {/* Top Bar with Live Badge & Mute Toggle */}
           <div className="absolute top-4 inset-x-4 flex items-center justify-between z-20 pointer-events-none">
             <span className="bg-red-600/90 text-white font-black text-[10px] px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow">
-              ● Official Video
+              ● Official Product Video
             </span>
             <button
               onClick={(e) => {
@@ -83,7 +75,7 @@ export function VideoShowcase({ lang }: VideoShowcaseProps) {
             </button>
           </div>
 
-          {/* Central Play/Pause Overlay */}
+          {/* Play/Pause Overlay */}
           {!isPlaying && (
             <div
               onClick={togglePlay}
@@ -99,7 +91,7 @@ export function VideoShowcase({ lang }: VideoShowcaseProps) {
           <div className="absolute bottom-4 inset-x-4 z-20 p-3 rounded-2xl bg-slate-950/90 backdrop-blur-md border border-white/10 space-y-2">
             <div className="flex items-center justify-between text-xs">
               <span className="font-extrabold text-white">
-                {lang === 'te' ? 'హనుమంతు / సూరా దేవి ప్రసాద్' : 'AdVibe Tech Rajampet'}
+                AdVibe Tech • Sura Devi Prasad
               </span>
               <span className="text-[11px] font-bold text-amber-400">
                 +91 7075209795

@@ -1,12 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ELECTION_SYMBOLS, PARTY_THEMES } from '@/data/symbols';
-import { MessageCircle, CheckCircle, ShieldCheck, Sparkles, Send } from 'lucide-react';
+import { MessageCircle, CheckCircle, ShieldCheck, Sparkles } from 'lucide-react';
 import { useHaptic } from '@/hooks/useHaptic';
 
 interface BookingFormProps {
-  lang: 'te' | 'en';
   prefilledSymbol?: string;
   prefilledQuantities?: {
     keychains?: number;
@@ -17,20 +15,22 @@ interface BookingFormProps {
   };
 }
 
-export function BookingForm({ lang, prefilledSymbol, prefilledQuantities }: BookingFormProps) {
-  const { triggerLightTap, triggerSelectionTap, triggerSuccessHaptic } = useHaptic();
+export function BookingForm({ prefilledSymbol, prefilledQuantities }: BookingFormProps) {
+  const { triggerLightTap, triggerSuccessHaptic } = useHaptic();
 
   // Form State
   const [candidateName, setCandidateName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [location, setLocation] = useState('');
-  const [symbol, setSymbol] = useState(prefilledSymbol || 'Cot / మంచం');
-  const [partyTheme, setPartyTheme] = useState('పసుపు / Yellow');
+  // Free text input for Election Symbol as requested (party/independent/custom)
+  const [symbol, setSymbol] = useState(prefilledSymbol || '');
+  const [partyTheme, setPartyTheme] = useState('Yellow Theme');
   const [keychainQty, setKeychainQty] = useState(prefilledQuantities?.keychains || 500);
   const [tshirtQty, setTshirtQty] = useState(prefilledQuantities?.tshirts || 0);
   const [stickerQty, setStickerQty] = useState(prefilledQuantities?.stickers || 500);
   const [placardQty, setPlacardQty] = useState(prefilledQuantities?.placards || 0);
   const [badgeQty, setBadgeQty] = useState(prefilledQuantities?.badges || 0);
+  const [serviceType, setServiceType] = useState('Campaign Merchandise & Printing');
   const [notes, setNotes] = useState('');
 
   // UI status
@@ -41,15 +41,19 @@ export function BookingForm({ lang, prefilledSymbol, prefilledQuantities }: Book
     e.preventDefault();
 
     if (!candidateName.trim()) {
-      setErrorMessage(lang === 'te' ? 'దయచేసి అభ్యర్థి పేరు నమోదు చేయండి' : 'Please enter Candidate / Contact name');
+      setErrorMessage('Please enter Candidate / Contact person name');
       return;
     }
     if (!phoneNumber.trim() || phoneNumber.length < 10) {
-      setErrorMessage(lang === 'te' ? 'దయచేసి సరైన 10 అంకెల ఫోన్ నంబర్ నమోదు చేయండి' : 'Please enter a valid 10-digit phone number');
+      setErrorMessage('Please enter a valid 10-digit phone number');
       return;
     }
     if (!location.trim()) {
-      setErrorMessage(lang === 'te' ? 'దయచేసి గ్రామం / మండలం / జిల్లా వివరాలు నమోదు చేయండి' : 'Please enter Village, Mandal & District');
+      setErrorMessage('Please enter Village, Mandal & District details');
+      return;
+    }
+    if (!symbol.trim()) {
+      setErrorMessage('Please enter your allocated Election Symbol (or type "Yet to be allocated")');
       return;
     }
 
@@ -57,57 +61,54 @@ export function BookingForm({ lang, prefilledSymbol, prefilledQuantities }: Book
     triggerSuccessHaptic();
     setSubmitted(true);
 
-    // Build Formatted WhatsApp Message
+    // Build Formatted English WhatsApp Message
     const formattedMessage =
-`🗳️ *అద్వైబ్ టెక్ - ఎన్నికల ప్రచార సామగ్రి ఆర్డర్ బుకింగ్* 🗳️
+`🗳️ *AdVibe Tech - Campaign Order & Service Booking* 🗳️
 -----------------------------------------
-👤 *అభ్యర్థి / కాంటాక్ట్ పేరు:* ${candidateName.trim()}
-📱 *ఫోన్ నంబర్:* ${phoneNumber.trim()}
-📍 *గ్రామం/మండలం/జిల్లా:* ${location.trim()}
-🎯 *ఎన్నికల గుర్తు:* ${symbol}
-🎨 *రంగుల థీమ్:* ${partyTheme}
+👤 *Candidate / Contact Name:* ${candidateName.trim()}
+📱 *Phone Number:* ${phoneNumber.trim()}
+📍 *Village, Mandal & District:* ${location.trim()}
+🎯 *Election Symbol:* ${symbol.trim()}
+🎨 *Party / Color Theme:* ${partyTheme}
+💼 *Service Selected:* ${serviceType}
 
-📦 *కావాల్సిన వస్తువుల వివరాలు:*
-${keychainQty > 0 ? `• ఓవల్ కీచైన్లు: ${keychainQty} పీసులు (కనిష్టం 500)\n` : ''}${stickerQty > 0 ? `• మొబైల్ స్టిక్కర్లు: ${stickerQty} పీసులు\n` : ''}${tshirtQty > 0 ? `• ప్రచార టీ-షర్ట్లు: ${tshirtQty} పీసులు\n` : ''}${placardQty > 0 ? `• హ్యాండ్ ప్లకార్డ్స్: ${placardQty} పీసులు\n` : ''}${badgeQty > 0 ? `• బ్యాడ్జెస్ / కండువాలు: ${badgeQty} పీసులు\n` : ''}
-${notes.trim() ? `📝 *సూచనలు / డెలివరీ గడువు:* ${notes.trim()}\n` : ''}-----------------------------------------
-_వెబ్‌సైట్ (advibetech.top) ద్వారా నేరుగా పంపబడిన ఆర్డర్ వినతి_
-_యజమాని సూరా దేవి ప్రసాద్ గారికి (+91 7075209795)_`;
+📦 *Required Merchandise & Quantities:*
+${keychainQty > 0 ? `• Double-Sided Oval Keychains: ${keychainQty} Pcs (MOQ 500)\n` : ''}${stickerQty > 0 ? `• Glossy Mobile Stickers: ${stickerQty} Pcs\n` : ''}${tshirtQty > 0 ? `• Campaign T-Shirts: ${tshirtQty} Pcs\n` : ''}${placardQty > 0 ? `• Hand Placards / Fan Signs: ${placardQty} Pcs\n` : ''}${badgeQty > 0 ? `• Cadre Badges & Scarves: ${badgeQty} Pcs\n` : ''}
+${notes.trim() ? `📝 *Special Instructions / Deadline:* ${notes.trim()}\n` : ''}-----------------------------------------
+_Sent via Official Website (advibetech.top)_
+_Direct to Owner: SURA DEVI PRASAD (+91 7075209795)_`;
 
     // Open WhatsApp directly to owner
     const encoded = encodeURIComponent(formattedMessage);
     const waUrl = `https://api.whatsapp.com/send?phone=917075209795&text=${encoded}`;
-    
+
     setTimeout(() => {
       window.open(waUrl, '_blank');
     }, 400);
   };
 
   return (
-    <section id="booking" className="py-12 px-3 sm:px-6">
+    <section id="booking" className="py-14 px-3 sm:px-6">
       <div className="max-w-4xl mx-auto">
-        <div className="rounded-3xl bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 border-2 border-emerald-500/40 p-5 sm:p-8 shadow-2xl relative overflow-hidden">
-          {/* Top Decorative Banner */}
+        <div className="rounded-3xl bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 border-2 border-emerald-500/40 p-5 sm:p-10 shadow-2xl relative overflow-hidden">
+          {/* Header */}
           <div className="text-center space-y-2 mb-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-bold">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-bold uppercase tracking-wider">
               <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
-              <span>{lang === 'te' ? 'డైరెక్ట్ యజమాని ఆర్డర్ బుకింగ్' : 'Direct Owner Booking Gateway'}</span>
+              <span>Direct Manufacturer Booking Gateway</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
-              {lang === 'te'
-                ? 'మీ ప్రచార సామగ్రిని నేరుగా బుక్ చేయండి'
-                : 'Book Your Election Campaign Merchandise'}
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+              Book Your Order With Sura Devi Prasad
             </h2>
-            <p className="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto">
-              {lang === 'te'
-                ? 'క్రింది వివరాలు పూరించిన వెంటనే మీ ఆర్డర్ సారాంశం నేరుగా యజమాని సూరా దేవి ప్రసాద్ గారి (+91 7075209795) వాట్సాప్‌కు చేరుతుంది.'
-                : 'Fill in your details below to directly dispatch your requirements to owner Sura Devi Prasad (+91 7075209795) on WhatsApp for fast confirmation & samples.'}
+            <p className="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto leading-relaxed">
+              Fill in your details below. Your complete order summary will be compiled and sent directly to owner Sura Devi Prasad (+91 7075209795) on WhatsApp for fast confirmation and digital samples.
             </p>
           </div>
 
-          {/* Booking Form */}
+          {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-6">
             {errorMessage && (
-              <div className="p-3 rounded-xl bg-red-900/60 border border-red-500/50 text-red-200 text-xs font-bold text-center">
+              <div className="p-3.5 rounded-xl bg-red-900/60 border border-red-500/50 text-red-200 text-xs font-bold text-center">
                 {errorMessage}
               </div>
             )}
@@ -116,21 +117,21 @@ _యజమాని సూరా దేవి ప్రసాద్ గారి
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
                 <label className="text-xs font-bold text-slate-300">
-                  {lang === 'te' ? 'అభ్యర్థి / కాంటాక్ట్ పేరు (Candidate Name)*' : 'Candidate Name*'}
+                  Candidate / Contact Name <span className="text-emerald-400">*</span>
                 </label>
                 <input
                   type="text"
                   required
                   value={candidateName}
                   onChange={(e) => setCandidateName(e.target.value)}
-                  placeholder={lang === 'te' ? 'ఉదా: రమేష్ బాబు (సర్పంచ్ అభ్యర్థి)' : 'e.g. Ramesh Babu'}
+                  placeholder="e.g. Ramesh Babu / Suresh Kumar"
                   className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-400 transition"
                 />
               </div>
 
               <div className="space-y-1.5">
                 <label className="text-xs font-bold text-slate-300">
-                  {lang === 'te' ? 'ఫోన్ నంబర్ (WhatsApp Number)*' : 'Phone / WhatsApp Number*'}
+                  WhatsApp Contact Number <span className="text-emerald-400">*</span>
                 </label>
                 <input
                   type="tel"
@@ -146,49 +147,38 @@ _యజమాని సూరా దేవి ప్రసాద్ గారి
             {/* Row 2: Location (Village / Mandal / District) */}
             <div className="space-y-1.5">
               <label className="text-xs font-bold text-slate-300">
-                {lang === 'te' ? 'గ్రామం, మండలం & జిల్లా (Village, Mandal, District)*' : 'Village, Mandal & District*'}
+                Village, Mandal & District <span className="text-emerald-400">*</span>
               </label>
               <input
                 type="text"
                 required
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
-                placeholder={lang === 'te' ? 'ఉదా: బాలపల్లె గ్రామం, రాజంపేట మండలం, వైఎస్ఆర్ కడప జిల్లా' : 'e.g. Balapalle, Rajampet, Kadapa District'}
+                placeholder="e.g. Balapalle, Rajampet Mandal, YSR Kadapa District"
                 className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-400 transition"
               />
             </div>
 
-            {/* Row 3: Election Symbol & Party Theme */}
+            {/* Row 3: Election Symbol (FREE-TEXT INPUT FIELD) & Party Theme */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
-                <label className="text-xs font-bold text-slate-300">
-                  {lang === 'te' ? 'ఎన్నికల గుర్తు (Election Symbol)' : 'Election Symbol'}
+                <label className="text-xs font-bold text-slate-300 flex items-center justify-between">
+                  <span>Election Symbol (Type Any Symbol) <span className="text-emerald-400">*</span></span>
+                  <span className="text-[10px] text-amber-400 font-normal">Party or Independent</span>
                 </label>
-                <select
+                <input
+                  type="text"
+                  required
                   value={symbol}
-                  onChange={(e) => {
-                    triggerLightTap();
-                    setSymbol(e.target.value);
-                  }}
-                  className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 text-white text-sm focus:outline-none focus:border-emerald-400 transition"
-                >
-                  <option value="Cot / మంచం">మంచం గుర్తు (Cot Symbol)</option>
-                  <option value="Scissors / కత్తెర">కత్తెర గుర్తు (Scissors Symbol)</option>
-                  <option value="Ring / ఉంగరం">ఉంగరం గుర్తు (Ring Symbol)</option>
-                  <option value="Basket / బుట్ట">బుట్ట గుర్తు (Basket Symbol)</option>
-                  <option value="Stool / స్టూల్">స్టూల్ గుర్తు (Stool Symbol)</option>
-                  <option value="Bat / బ్యాట్">బ్యాట్ గుర్తు (Bat Symbol)</option>
-                  <option value="Gas Stove / గ్యాస్ స్టౌవ్">గ్యాస్ స్టౌవ్ గుర్తు (Gas Stove)</option>
-                  <option value="Football / ఫుట్‌బాల్">ఫుట్‌బాల్ గుర్తు (Football)</option>
-                  <option value="Cylinder / సిలిండర్">సిలిండర్ గుర్తు (Cylinder)</option>
-                  <option value="Frock / ఫ్రాక్">ఫ్రాక్ గుర్తు (Frock)</option>
-                  <option value="Custom / ఇతర గుర్తు">ఇతర గుర్తు (Other/Custom Symbol)</option>
-                </select>
+                  onChange={(e) => setSymbol(e.target.value)}
+                  placeholder="e.g. Cot, Scissors, Kite, Ring, Tractor, Glass, Fan..."
+                  className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-400 transition"
+                />
               </div>
 
               <div className="space-y-1.5">
                 <label className="text-xs font-bold text-slate-300">
-                  {lang === 'te' ? 'పార్టీ రంగులు / థీమ్' : 'Party Colors / Theme'}
+                  Color / Party Theme
                 </label>
                 <select
                   value={partyTheme}
@@ -198,28 +188,47 @@ _యజమాని సూరా దేవి ప్రసాద్ గారి
                   }}
                   className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 text-white text-sm focus:outline-none focus:border-emerald-400 transition"
                 >
-                  <option value="పసుపు / Yellow (TDP Theme)">పసుపు (TDP Theme)</option>
-                  <option value="నీలం & ఆకుపచ్చ / Blue & Green (YSR Theme)">నీలం & ఆకుపచ్చ (YSR Theme)</option>
-                  <option value="ఎరుపు & తెలుపు / Red & White (JSP Theme)">ఎరుపు & తెలుపు (JSP Theme)</option>
-                  <option value="మువ్వన్నెల రంగులు / Tricolor Theme">మువ్వన్నెల రంగులు (Tricolor)</option>
-                  <option value="కస్టమ్ రంగులు / Custom Colorways">ప్రత్యేక రంగులు (Custom Colorways)</option>
+                  <option value="Yellow Theme (TDP Style)">Yellow Theme</option>
+                  <option value="Blue & Green Theme (YSR Style)">Blue & Green Theme</option>
+                  <option value="Red & White Theme (JSP Style)">Red & White Theme</option>
+                  <option value="Tricolor National Theme">Tricolor Theme</option>
+                  <option value="Custom Independent Theme">Custom Independent Colorway</option>
                 </select>
               </div>
             </div>
 
-            {/* Row 4: Merchandise Quantities Configurator */}
+            {/* Row 4: Service Type Selection */}
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold text-slate-300">
+                Primary Service Required
+              </label>
+              <select
+                value={serviceType}
+                onChange={(e) => {
+                  triggerLightTap();
+                  setServiceType(e.target.value);
+                }}
+                className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 text-white text-sm focus:outline-none focus:border-emerald-400 transition"
+              >
+                <option value="Campaign Merchandise & Printing">Election Campaign Merchandise & Printing</option>
+                <option value="Digital Marketing & Social Media Ads">Digital Marketing, Meta Ads & Video Reels</option>
+                <option value="Combo: Merchandise + Digital Marketing">Combo: Full Physical Merchandise + Digital Marketing Campaign</option>
+              </select>
+            </div>
+
+            {/* Row 5: Merchandise Quantities Configurator */}
             <div className="space-y-3 pt-2">
               <label className="text-xs font-bold uppercase tracking-wider text-amber-400 block">
-                {lang === 'te' ? 'కావాల్సిన వస్తువుల సంఖ్యను ఎంచుకోండి:' : 'Select Merchandise Quantities:'}
+                Required Quantities (Enter 0 if not needed):
               </label>
 
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {/* Keychains */}
                 <div className="bg-slate-950 p-3 rounded-2xl border border-slate-800 space-y-1">
                   <span className="text-[11px] font-bold text-slate-300 block truncate">
-                    {lang === 'te' ? 'ఓవల్ కీచైన్లు' : 'Oval Keychains'}
+                    Oval Keychains
                   </span>
-                  <span className="text-[9px] text-emerald-400 block">కనిష్టం 500 pcs</span>
+                  <span className="text-[9px] text-emerald-400 block">MOQ 500 pcs</span>
                   <input
                     type="number"
                     min="0"
@@ -233,9 +242,9 @@ _యజమాని సూరా దేవి ప్రసాద్ గారి
                 {/* Stickers */}
                 <div className="bg-slate-950 p-3 rounded-2xl border border-slate-800 space-y-1">
                   <span className="text-[11px] font-bold text-slate-300 block truncate">
-                    {lang === 'te' ? 'మొబైల్ స్టిక్కర్లు' : 'Mobile Stickers'}
+                    Mobile Stickers
                   </span>
-                  <span className="text-[9px] text-blue-400 block">గ్లోసీ స్టిక్కర్స్</span>
+                  <span className="text-[9px] text-blue-400 block">Glossy Vinyl</span>
                   <input
                     type="number"
                     min="0"
@@ -249,9 +258,9 @@ _యజమాని సూరా దేవి ప్రసాద్ గారి
                 {/* T-Shirts */}
                 <div className="bg-slate-950 p-3 rounded-2xl border border-slate-800 space-y-1">
                   <span className="text-[11px] font-bold text-slate-300 block truncate">
-                    {lang === 'te' ? 'ప్రచార టీ-షర్ట్లు' : 'Campaign T-Shirts'}
+                    Campaign T-Shirts
                   </span>
-                  <span className="text-[9px] text-amber-400 block">కాలర్/రౌండ్ నెక్</span>
+                  <span className="text-[9px] text-amber-400 block">Collar / Round Neck</span>
                   <input
                     type="number"
                     min="0"
@@ -265,9 +274,9 @@ _యజమాని సూరా దేవి ప్రసాద్ గారి
                 {/* Placards */}
                 <div className="bg-slate-950 p-3 rounded-2xl border border-slate-800 space-y-1">
                   <span className="text-[11px] font-bold text-slate-300 block truncate">
-                    {lang === 'te' ? 'హ్యాండ్ ప్లకార్డ్స్' : 'Hand Placards'}
+                    Hand Placards & Fans
                   </span>
-                  <span className="text-[9px] text-slate-400 block">ర్యాలీ విసనకర్రలు</span>
+                  <span className="text-[9px] text-slate-400 block">Rally Signs</span>
                   <input
                     type="number"
                     min="0"
@@ -281,9 +290,9 @@ _యజమాని సూరా దేవి ప్రసాద్ గారి
                 {/* Badges / Kanduvas */}
                 <div className="bg-slate-950 p-3 rounded-2xl border border-slate-800 space-y-1 col-span-2 sm:col-span-1">
                   <span className="text-[11px] font-bold text-slate-300 block truncate">
-                    {lang === 'te' ? 'రిబ్బన్ బ్యాడ్జెస్' : 'Cadre Badges'}
+                    Cadre Badges & Scarves
                   </span>
-                  <span className="text-[9px] text-purple-400 block">రోసెట్స్ & కండువాలు</span>
+                  <span className="text-[9px] text-purple-400 block">Ribbon Rosettes</span>
                   <input
                     type="number"
                     min="0"
@@ -296,16 +305,16 @@ _యజమాని సూరా దేవి ప్రసాద్ గారి
               </div>
             </div>
 
-            {/* Row 5: Notes & Delivery Requirements */}
+            {/* Row 6: Notes & Delivery Requirements */}
             <div className="space-y-1.5">
               <label className="text-xs font-bold text-slate-300">
-                {lang === 'te' ? 'ప్రత్యేక సూచనలు / డెలివరీ గడువు' : 'Special Instructions / Delivery Deadline'}
+                Special Delivery Instructions or Campaign Details
               </label>
               <textarea
                 rows={2}
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
-                placeholder={lang === 'te' ? 'ఉదా: 4 రోజుల్లో డెలివరీ కావాలి, టీ-షర్ట్ సైజులు...' : 'e.g. Need delivery in 4 days, T-shirt sizes...'}
+                placeholder="e.g. Urgent delivery needed in 3 days, T-shirt sizes (L: 30, XL: 20), specific design requests..."
                 className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-400 transition"
               />
             </div>
@@ -316,20 +325,14 @@ _యజమాని సూరా దేవి ప్రసాద్ గారి
               className="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-emerald-500 via-emerald-600 to-green-600 hover:from-emerald-400 hover:to-emerald-500 text-slate-950 font-black text-sm sm:text-base shadow-xl shadow-emerald-500/30 flex items-center justify-center gap-3 transition-all active:scale-95 border border-emerald-300/40"
             >
               <MessageCircle className="w-5 h-5 fill-current" />
-              <span>
-                {lang === 'te'
-                  ? 'యజమాని సూరా దేవి ప్రసాద్ గారికి వాట్సాప్‌లో ఆర్డర్ పంపండి (+91 7075209795)'
-                  : 'Submit & Send Direct Order on WhatsApp (+91 7075209795)'}
-              </span>
+              <span>Send Order Direct to Sura Devi Prasad on WhatsApp (+91 7075209795)</span>
             </button>
 
             {/* Trust Assurance */}
             <div className="flex items-center justify-center gap-2 text-xs text-slate-400 pt-1">
               <ShieldCheck className="w-4 h-4 text-emerald-400" />
               <span>
-                {lang === 'te'
-                  ? 'నేరుగా తయారీదారుడు సూరా దేవి ప్రసాద్ (రాజంపేట) గారికి చేరుతుంది. దళారులు లేరు.'
-                  : 'Direct dispatch to owner Sura Devi Prasad (Rajampet). 100% Genuine factory pricing.'}
+                Direct manufacturer dispatch from Rajampet, Kadapa. 100% genuine factory prices with zero middleman commissions.
               </span>
             </div>
           </form>
@@ -342,18 +345,16 @@ _యజమాని సూరా దేవి ప్రసాద్ గారి
                   <CheckCircle className="w-8 h-8" />
                 </div>
                 <h3 className="text-lg font-black text-white">
-                  {lang === 'te' ? 'ఆర్డర్ సిద్ధమైంది!' : 'Order Prepared!'}
+                  Order Message Generated!
                 </h3>
                 <p className="text-xs text-slate-300 leading-relaxed">
-                  {lang === 'te'
-                    ? 'మీ ఆర్డర్ వివరాలు వాట్సాప్‌లో ఓపెన్ అవుతున్నాయి. యజమాని సూరా దేవి ప్రసాద్ గారికి సెండ్ బటన్ నొక్కండి.'
-                    : 'Opening WhatsApp to send your requirement to owner Sura Devi Prasad (+91 7075209795). Simply hit Send on WhatsApp.'}
+                  WhatsApp is opening with your formatted requirements. Simply tap Send to connect directly with owner Sura Devi Prasad (+91 7075209795).
                 </p>
                 <button
                   onClick={() => setSubmitted(false)}
                   className="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs"
                 >
-                  {lang === 'te' ? 'సరే' : 'Close'}
+                  Close
                 </button>
               </div>
             </div>

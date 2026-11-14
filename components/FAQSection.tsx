@@ -4,38 +4,34 @@ import React, { useState } from 'react';
 import { ChevronDown, HelpCircle } from 'lucide-react';
 import { useHaptic } from '@/hooks/useHaptic';
 
-interface FAQProps {
-  lang: 'te' | 'en';
-}
-
-export function FAQSection({ lang }: FAQProps) {
+export function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const { triggerLightTap } = useHaptic();
 
   const faqs = [
     {
-      qTe: 'ఆర్డర్ ఎలా ఇవ్వాలి? ఫోటో మరియు గుర్తును ఎలా పంపాలి?',
-      qEn: 'How to place an order? How do we send candidate photos & symbols?',
-      aTe: 'మీరు వెబ్‌సైట్‌లోని ఆర్డర్ బుకింగ్ ఫారమ్ ద్వారా లేదా నేరుగా మా వాట్సాప్ (+91 7075209795) ద్వారా మీ అభ్యర్థి ఫోటో, పేరు మరియు ఎన్నికల గుర్తును పంపవచ్చు. మా డిజైనర్లు 15 నిమిషాల్లో డిజిటల్ ప్రివ్యూ తయారు చేసి మీకు పంపిస్తారు.',
-      aEn: 'You can submit through the booking form on this website or directly message us on WhatsApp (+91 7075209795) with the candidate photo, name and symbol. Our design team will share a digital mockup within 15 minutes.'
+      q: 'How do I place an order? How do I send candidate photos and symbols?',
+      a: 'You can submit your requirements via the online booking form on this website or directly message owner Sura Devi Prasad on WhatsApp (+91 7075209795) with your candidate photo, name, and allocated symbol. Our design studio will prepare and share a free digital preview within 15 minutes.'
     },
     {
-      qTe: 'కీచైన్లు మరియు స్టిక్కర్లకు కనీస ఆర్డర్ (MOQ) ఎంత?',
-      qEn: 'What is the Minimum Order Quantity (MOQ)?',
-      aTe: 'ఓవల్ మరియు రౌండ్ ఫోటో కీచైన్లకు కనిష్ట ఆర్డర్ 500 పీసులు. మొబైల్ స్టిక్కర్లకు 500 పీసులు, టీ-షర్ట్లకు 25 పీసులు. భారీ ఆర్డర్లకు అదనపు రాయితీ లభిస్తుంది.',
-      aEn: 'For Oval and Round Photo Keychains, the minimum order is 500 pieces. For Mobile Stickers, it is 500 pieces, and for T-shirts it is 25 pieces. Bulk discounts apply for larger quantities.'
+      q: 'Can independent candidates enter custom or unlisted election symbols?',
+      a: 'Yes, absolutely! Since election symbols vary across political parties and independent candidates receive diverse symbols (Kite, Tractor, Glass, Cot, Scissors, Ring, etc.), our booking form allows you to freely type any symbol name. We print all official election commission symbols.'
     },
     {
-      qTe: 'మా ఊరికి డెలివరీ కావడానికి ఎన్ని రోజులు పడుతుంది?',
-      qEn: 'How many days does doorstep delivery take to our village/mandal?',
-      aTe: 'డిజైన్ కన్ఫర్మ్ అయిన 24 నుండి 48 గంటల్లో ప్రొడక్షన్ పూర్తవుతుంది. ఆర్టీసీ కార్గో, ప్రైవేట్ బస్సులు లేదా కొరియర్ ద్వారా ఆంధ్రప్రదేశ్ మరియు తెలంగాణలోని ఏ మండలానికైనా 2-3 రోజుల్లో చేరుతుంది.',
-      aEn: 'Production completes within 24 to 48 hours of design approval. Dispatch takes 1-3 days via RTC Cargo or express courier to any mandal across AP and Telangana.'
+      q: 'What is the Minimum Order Quantity (MOQ)?',
+      a: 'For Double-Sided Oval Keychains and Round Photo Keychains, the minimum order is 500 pieces. For Glossy Mobile Stickers, the MOQ is 500 pieces, and for Campaign T-Shirts, it is 25 pieces. Bulk discounts apply for major campaign orders.'
     },
     {
-      qTe: 'ముద్రణ నాణ్యత ఎలా ఉంటుంది? రంగులు వెలసిపోవా?',
-      qEn: 'What is the print durability? Will colors fade in sunlight?',
-      aTe: 'మా కీచైన్లు రెండు వైపులా హై-క్వాలిటీ యాక్రిలిక్ షీల్డ్‌తో తయారు చేయబడతాయి. మొబైల్ స్టిక్కర్లు వాటర్‌ప్రూఫ్ గ్లోసీ గమ్మింగ్‌తో ఉంటాయి. ఎండ మరియు వర్షానికి కూడా రంగులు చెరిగిపోవు.',
-      aEn: 'Our keychains feature double-sided scratch-resistant acrylic shields. Mobile stickers are printed on waterproof high-gloss vinyl that withstands sunlight and moisture.'
+      q: 'Do you offer Digital Marketing, Meta Ads & Video Reels alongside merchandise?',
+      a: 'Yes! Our digital division manages hyper-local Facebook & Instagram sponsored ads, WhatsApp voter broadcast campaigns, candidate video reels, and political PR across Andhra Pradesh and Telangana constituencies.'
+    },
+    {
+      q: 'How fast is doorstep delivery to our village / mandal?',
+      a: 'Production completes within 24 to 48 hours of design approval. Dispatch takes 1 to 3 business days via RTC Cargo or express logistics to any village or mandal across Andhra Pradesh and Telangana.'
+    },
+    {
+      q: 'What is the printing durability? Will colors fade in the sun?',
+      a: 'Our keychains feature double-sided scratch-resistant crystal acrylic shields. Mobile stickers are printed on premium waterproof vinyl that withstands sunlight, rain, and daily wear.'
     },
   ];
 
@@ -45,15 +41,15 @@ export function FAQSection({ lang }: FAQProps) {
   };
 
   return (
-    <section className="py-12 px-3 sm:px-6">
+    <section className="py-14 px-3 sm:px-6">
       <div className="max-w-3xl mx-auto space-y-6">
         <div className="text-center space-y-2">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-300 text-xs font-semibold">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-300 text-xs font-semibold uppercase tracking-wider">
             <HelpCircle className="w-3.5 h-3.5 text-amber-400" />
-            <span>{lang === 'te' ? 'తరచుగా అడిగే ప్రశ్నలు' : 'FAQ & Order Process'}</span>
+            <span>Frequently Asked Questions</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
-            {lang === 'te' ? 'మీ సందేహాలు & సమాధానాలు' : 'Frequently Asked Questions'}
+            Everything You Need To Know
           </h2>
         </div>
 
@@ -69,7 +65,7 @@ export function FAQSection({ lang }: FAQProps) {
                   onClick={() => toggle(idx)}
                   className="w-full p-4 text-left flex items-center justify-between gap-3 text-sm font-bold text-white hover:text-amber-400 transition-colors"
                 >
-                  <span>{lang === 'te' ? faq.qTe : faq.qEn}</span>
+                  <span>{faq.q}</span>
                   <ChevronDown
                     className={`w-4 h-4 text-slate-400 shrink-0 transition-transform duration-200 ${
                       isOpen ? 'rotate-180 text-amber-400' : ''
@@ -78,7 +74,7 @@ export function FAQSection({ lang }: FAQProps) {
                 </button>
                 {isOpen && (
                   <div className="px-4 pb-4 text-xs text-slate-300 leading-relaxed border-t border-slate-800/60 pt-3">
-                    {lang === 'te' ? faq.aTe : faq.aEn}
+                    {faq.a}
                   </div>
                 )}
               </div>

@@ -1,14 +1,10 @@
 'use client';
 
 import React from 'react';
-import { Home, Package, Sparkles, Phone, MessageCircle } from 'lucide-react';
+import { Home, Package, Sparkles, Phone, MessageCircle, Megaphone } from 'lucide-react';
 import { useHaptic } from '@/hooks/useHaptic';
 
-interface BottomNavProps {
-  lang: 'te' | 'en';
-}
-
-export function BottomNav({ lang }: BottomNavProps) {
+export function BottomNav() {
   const { triggerLightTap, triggerSuccessHaptic } = useHaptic();
 
   const scrollTo = (id: string) => {
@@ -30,11 +26,11 @@ export function BottomNav({ lang }: BottomNavProps) {
 
   const handleWhatsApp = () => {
     triggerSuccessHaptic();
-    window.open('https://wa.me/917075209795?text=Hi%20Sura%20Devi%20Prasad%20garu,%20I%20want%20to%20order%20campaign%20merchandise.', '_blank');
+    window.open('https://wa.me/917075209795?text=Hello%20Sura%20Devi%20Prasad%20garu,%20I%20would%20like%20to%20order%20campaign%20merchandise%20and%20digital%20marketing%20services.', '_blank');
   };
 
   return (
-    <div className="fixed bottom-0 inset-x-0 z-50 sm:hidden glass-nav pb-[env(safe-area-inset-bottom)]">
+    <div className="fixed bottom-0 inset-x-0 z-50 md:hidden glass-nav pb-[env(safe-area-inset-bottom)]">
       <div className="grid grid-cols-5 h-16 items-center px-1">
         {/* Home */}
         <button
@@ -42,7 +38,7 @@ export function BottomNav({ lang }: BottomNavProps) {
           className="flex flex-col items-center justify-center gap-1 text-slate-400 hover:text-white transition active:scale-90"
         >
           <Home className="w-5 h-5" />
-          <span className="text-[10px] font-medium">{lang === 'te' ? 'హోమ్' : 'Home'}</span>
+          <span className="text-[10px] font-medium">Home</span>
         </button>
 
         {/* Catalog */}
@@ -51,25 +47,25 @@ export function BottomNav({ lang }: BottomNavProps) {
           className="flex flex-col items-center justify-center gap-1 text-slate-400 hover:text-white transition active:scale-90"
         >
           <Package className="w-5 h-5" />
-          <span className="text-[10px] font-medium">{lang === 'te' ? 'కేటలాగ్' : 'Catalog'}</span>
+          <span className="text-[10px] font-medium">Catalog</span>
         </button>
 
-        {/* Mockup Generator */}
+        {/* Digital Marketing */}
+        <button
+          onClick={() => scrollTo('digital-marketing')}
+          className="flex flex-col items-center justify-center gap-1 text-cyan-400 hover:text-cyan-300 transition active:scale-90"
+        >
+          <Megaphone className="w-5 h-5 fill-current" />
+          <span className="text-[10px] font-bold">Digital</span>
+        </button>
+
+        {/* Mockup Studio */}
         <button
           onClick={() => scrollTo('mockup')}
           className="flex flex-col items-center justify-center gap-1 text-amber-400 hover:text-amber-300 transition active:scale-90"
         >
           <Sparkles className="w-5 h-5 fill-current" />
-          <span className="text-[10px] font-bold">{lang === 'te' ? 'ప్రివ్యూ' : 'Mockup'}</span>
-        </button>
-
-        {/* Call */}
-        <button
-          onClick={handleCall}
-          className="flex flex-col items-center justify-center gap-1 text-blue-400 hover:text-blue-300 transition active:scale-90"
-        >
-          <Phone className="w-5 h-5 fill-current" />
-          <span className="text-[10px] font-medium">{lang === 'te' ? 'కాల్' : 'Call'}</span>
+          <span className="text-[10px] font-bold">Mockup</span>
         </button>
 
         {/* WhatsApp Book */}
@@ -81,7 +77,7 @@ export function BottomNav({ lang }: BottomNavProps) {
             <MessageCircle className="w-5 h-5 fill-current" />
             <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
           </div>
-          <span className="text-[10px] font-extrabold">{lang === 'te' ? 'వాట్సాప్' : 'WhatsApp'}</span>
+          <span className="text-[10px] font-extrabold">WhatsApp</span>
         </button>
       </div>
     </div>
