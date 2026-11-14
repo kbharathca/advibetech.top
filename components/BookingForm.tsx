@@ -95,7 +95,7 @@ _Direct to Owner: SURA DEVI PRASAD (+91 7075209795)_`;
           <div className="text-center space-y-2 mb-8">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-bold uppercase tracking-wider">
               <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Direct Manufacturer Booking Gateway</span>
+              <span>Direct WhatsApp Order & Quote Form</span>
             </div>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
               Book Your Order With Sura Devi Prasad

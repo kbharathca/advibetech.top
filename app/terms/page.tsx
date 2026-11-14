@@ -3,11 +3,11 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { ShieldAlert, ArrowLeft, FileText, CheckCircle2 } from 'lucide-react';
+import { FileText, ArrowLeft } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Terms and Conditions | AdVibe Tech - Commercial Policy & Client Agreement',
-  description: 'Official Terms of Service and Manufacturing Agreement for AdVibe Tech (advibetech.top). Disclosing ordering procedures, client representations, and electoral compliance.',
+  title: 'Terms & Conditions | AdVibe Tech',
+  description: 'Clear and simple customer terms for ordering custom election campaign merchandise and digital marketing services from AdVibe Tech.',
 };
 
 export default function TermsPage() {
@@ -30,131 +30,106 @@ export default function TermsPage() {
         <div className="space-y-3 border-b border-slate-800 pb-6">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-wider">
             <FileText className="w-3.5 h-3.5 text-blue-400" />
-            <span>Commercial Manufacturing & Marketing Agreement</span>
+            <span>Customer Order & Service Guidelines</span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Terms and Conditions
+            Terms & Conditions
           </h1>
           <p className="text-xs sm:text-sm text-slate-400">
-            Effective Date: January 1, 2024 &bull; Last Revised: November 2026
+            Clear, straightforward guidelines for ordering with AdVibe Tech &bull; Last Updated: November 2026
           </p>
         </div>
 
         {/* Content */}
         <div className="space-y-8 text-sm text-slate-300 leading-relaxed">
-          {/* 1. Overview */}
+          {/* 1. Ordering With Us */}
           <section className="space-y-3">
             <h2 className="text-lg font-bold text-white flex items-center gap-2">
               <span className="w-1.5 h-4 bg-amber-400 rounded-full inline-block" />
-              1. Acceptance of Terms
+              1. Ordering & Custom Quotations
             </h2>
             <p>
-              By accessing, browsing, submitting inquiries on <strong className="text-white">advibetech.top</strong>, or placing customized manufacturing orders via WhatsApp with <strong>AdVibe Tech</strong> (Proprietor: SURA DEVI PRASAD), you agree to be bound by these Terms and Conditions. If you do not agree with any part of these terms, please discontinue using this site and our services immediately.
+              When you submit an order or request a quote on <strong className="text-white">advibetech.top</strong> or through WhatsApp (+91 7075209795), we work with you directly to confirm quantities, item types, color themes, and printing details. These terms explain how our design, production, and delivery process works from start to finish.
             </p>
           </section>
 
-          {/* 2. Nature of Business & Commercial Relationship */}
+          {/* 2. Equal Service for Everyone */}
           <section className="space-y-3">
             <h2 className="text-lg font-bold text-white flex items-center gap-2">
               <span className="w-1.5 h-4 bg-amber-400 rounded-full inline-block" />
-              2. Commercial Vendor & Non-Partisan Service
+              2. Open & Equal Service for All Candidates
             </h2>
             <p>
-              AdVibe Tech operates purely as an independent, third-party commercial printing manufacturer and digital marketing consultant. We provide custom merchandise fabrication (keychains, t-shirts, mobile stickers, placards, badges) and digital advertising execution to candidates, party cadres, independent candidates, and commercial businesses on an open, commercial, and strictly non-discriminatory basis.
-            </p>
-            <p className="p-3 bg-slate-900 border border-slate-800 rounded-xl text-xs text-slate-300">
-              <strong className="text-amber-400">Non-Partisan Commitment:</strong> AdVibe Tech does not endorse, support, or affiliate with any political ideology, party, or candidate. Our provision of printing or marketing services does not constitute an endorsement of the client&apos;s political beliefs, campaign promises, or conduct.
+              AdVibe Tech is an independent commercial printing manufacturer. We are proud to serve candidates and organizers from all political parties as well as independent candidates equally and without discrimination. We treat every customer with professional care and prompt service.
             </p>
           </section>
 
-          {/* 3. Client Representations & Intellectual Property Rights */}
+          {/* 3. Your Photos, Slogans & Symbols */}
           <section className="space-y-3">
             <h2 className="text-lg font-bold text-white flex items-center gap-2">
               <span className="w-1.5 h-4 bg-amber-400 rounded-full inline-block" />
-              3. Client Authorization & Content Ownership Warranty
+              3. Providing Your Photos and Symbols
             </h2>
             <p>
-              When submitting candidate names, portrait photos, election symbols, registered trade logos, party flags, or slogans for custom merchandise manufacturing or digital ad creative production, the client represents and warrants that:
+              To customize your keychains, T-shirts, stickers, and placards, you provide us with candidate portrait photos, names, symbols, and slogans. When you share these assets with us, you confirm that you are the candidate or an authorized campaign worker with permission to use them.
+            </p>
+          </section>
+
+          {/* 4. Design Approval Before Printing */}
+          <section className="space-y-3">
+            <h2 className="text-lg font-bold text-white flex items-center gap-2">
+              <span className="w-1.5 h-4 bg-amber-400 rounded-full inline-block" />
+              4. You Approve the Design Before We Print
+            </h2>
+            <p>
+              We always send you a clear digital mockup of your keychain, T-shirt, or sticker on WhatsApp before mass production begins.
             </p>
             <ul className="list-disc pl-5 space-y-1.5">
-              <li>The client is the candidate, an officially nominated campaign manager, or an authorized representative legally entitled to use the submitted materials.</li>
-              <li>The submitted content does not violate any copyright, trademark, right of publicity, or proprietary right of any third party.</li>
-              <li>The candidate has officially been allotted or is legally entitled to seek votes under the designated symbol, or has provided explicit written consent.</li>
-              <li>The client shall indemnify, defend, and hold harmless AdVibe Tech and its proprietor against any claims, losses, or legal costs arising from trademark infringement or unauthorized use of personal likenesses provided by the client.</li>
+              <li>Please check spelling, symbol details, phone numbers, and photos carefully.</li>
+              <li>Once you approve the design on WhatsApp, our machines begin cutting acrylic, printing films, and stitching.</li>
+              <li>Because all items are custom-made specifically for your campaign, orders cannot be changed or cancelled after proof approval.</li>
             </ul>
           </section>
 
-          {/* 4. Model Code of Conduct & Statutory Compliance */}
+          {/* 5. Minimum Order Quantities & Fair Pricing */}
           <section className="space-y-3">
             <h2 className="text-lg font-bold text-white flex items-center gap-2">
               <span className="w-1.5 h-4 bg-amber-400 rounded-full inline-block" />
-              4. Election Commission Rules & Model Code of Conduct (MCC)
+              5. Minimum Order Quantities (MOQ) & Payment
             </h2>
             <p>
-              The client acknowledges and agrees that compliance with election laws is solely their legal responsibility:
+              Because customized printing requires specialized setup and machine batching, minimum order quantities apply:
             </p>
-            <ul className="list-disc pl-5 space-y-1.5">
-              <li><strong>Regulatory Permissions:</strong> The client is solely responsible for obtaining any necessary permissions or clearances from the Election Commission of India (ECI), State Election Commission, District Collector / Returning Officer (RO), and local police authorities prior to distributing merchandise or publishing ads.</li>
-              <li><strong>Expense Accounting:</strong> The client is solely responsible for recording and reporting expenditure on election promotional merchandise and digital marketing within their statutory election expenditure limits. Commercial GST tax invoices will be provided upon request.</li>
-              <li><strong>Model Code of Conduct:</strong> AdVibe Tech will decline to print content that contains hate speech, promotes communal disharmony, defames individuals, or violates the Indian Penal Code or MCC guidelines.</li>
+            <ul className="list-disc pl-5 space-y-1">
+              <li><strong>Double-Sided Keychains:</strong> Minimum 500 pieces</li>
+              <li><strong>Glossy Mobile Stickers:</strong> Minimum 500 pieces</li>
+              <li><strong>Custom Campaign T-Shirts:</strong> Minimum 25 pieces</li>
+              <li><strong>Combo Packs:</strong> Pre-bundled packages with special bulk savings</li>
             </ul>
+            <p className="pt-1">
+              An advance deposit is standard to begin production, with the balance cleared prior to dispatch or upon parcel pickup as agreed in your quote.
+            </p>
           </section>
 
-          {/* 5. Proofing, Production & Color Variances */}
+          {/* 6. Campaign Guidelines & Local Rules */}
           <section className="space-y-3">
             <h2 className="text-lg font-bold text-white flex items-center gap-2">
               <span className="w-1.5 h-4 bg-amber-400 rounded-full inline-block" />
-              5. Digital Proofing & Manufacturing Tolerances
+              6. Campaign Guidelines & Local Rules
             </h2>
             <p>
-              Before mass printing, a digital mockup of the keychain, sticker, or t-shirt design is sent to the client via WhatsApp for review.
+              Campaign teams are responsible for ensuring that their campaign materials, rally items, and advertising comply with local election rules, police permissions, and the Model Code of Conduct. We provide commercial printing and promotional tools to assist your voter outreach.
             </p>
-            <ul className="list-disc pl-5 space-y-1.5">
-              <li><strong>Client Proof Approval:</strong> Once the client approves the digital proof (via text confirmation on WhatsApp or email), mass production is initiated immediately. AdVibe Tech is not responsible for typographical errors, spelling mistakes, or incorrect symbol numbers approved by the client.</li>
-              <li><strong>Color Tolerance:</strong> Screen displays (RGB) inherently vary from physical print outputs (CMYK / Sublimation inks). A minor tolerance (±5-8%) in shade intensity is normal and accepted across the printing industry.</li>
-            </ul>
           </section>
 
-          {/* 6. Pricing, Payments & Taxes */}
+          {/* 7. Need Help or Have Questions? */}
           <section className="space-y-3">
             <h2 className="text-lg font-bold text-white flex items-center gap-2">
               <span className="w-1.5 h-4 bg-amber-400 rounded-full inline-block" />
-              6. Pricing & Payment Terms
+              7. Questions About Your Order?
             </h2>
             <p>
-              Due to the personalized nature of customized merchandise:
-            </p>
-            <ul className="list-disc pl-5 space-y-1.5">
-              <li>Standard payment terms require an advance deposit (typically 50%) prior to raw material cutting and printing, with the balance cleared prior to dispatch or upon delivery via agreed cargo COD terms.</li>
-              <li>Minimum Order Quantities (MOQs) are mandatory: 500 pcs for Keychains, 500 pcs for Mobile Stickers, and 25 pcs for T-Shirts.</li>
-              <li>Prices quoted are subject to prevailing material rates, and valid for 7 calendar days from quotation.</li>
-            </ul>
-          </section>
-
-          {/* 7. Limitation of Liability */}
-          <section className="space-y-3">
-            <h2 className="text-lg font-bold text-white flex items-center gap-2">
-              <span className="w-1.5 h-4 bg-amber-400 rounded-full inline-block" />
-              7. Limitation of Liability & No Outcome Warranty
-            </h2>
-            <p>
-              Under no circumstances shall AdVibe Tech, its proprietor (Sura Devi Prasad), or employees be liable for:
-            </p>
-            <ul className="list-disc pl-5 space-y-1.5">
-              <li>Any election outcomes, vote totals, disqualifications, or political penalties incurred by candidates or parties.</li>
-              <li>Unforeseen transit delays caused by road blockades, festival holidays, curfews, or third-party cargo disruptions beyond our reasonable control.</li>
-              <li>Total aggregate liability for any proven manufacturing defect shall not exceed the actual invoiced purchase price paid by the customer for the specific defective items.</li>
-            </ul>
-          </section>
-
-          {/* 8. Governing Law & Jurisdiction */}
-          <section className="space-y-3">
-            <h2 className="text-lg font-bold text-white flex items-center gap-2">
-              <span className="w-1.5 h-4 bg-amber-400 rounded-full inline-block" />
-              8. Governing Law & Dispute Resolution
-            </h2>
-            <p>
-              These Terms and Conditions shall be governed by and construed in accordance with the laws of the Republic of India. Any legal dispute, claim, or proceeding arising under or in connection with these terms shall be subject to the exclusive jurisdiction of the competent courts in Rajampet / Kadapa District, Andhra Pradesh.
+              If you ever have any questions about your order, need an updated delivery estimate, or want to re-order additional batches, call or message us directly at <a href="tel:+917075209795" className="text-blue-400 font-bold underline">+91 7075209795</a>. We are always glad to assist you.
             </p>
           </section>
         </div>
@@ -165,7 +140,7 @@ export default function TermsPage() {
             &larr; Privacy Policy
           </Link>
           <Link href="/refund-policy" className="text-xs text-amber-400 hover:underline">
-            Refund & Cancellation Policy &rarr;
+            Refund & Quality Guarantee Policy &rarr;
           </Link>
         </div>
       </main>

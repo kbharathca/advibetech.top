@@ -31,13 +31,13 @@ export function ProprietorTrust() {
         <div className="text-center space-y-2">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold uppercase tracking-wider">
             <ShieldCheck className="w-3.5 h-3.5 text-amber-400" />
-            <span>Verified Manufacturing Credentials</span>
+            <span>Direct Workshop & Proprietor Details</span>
           </div>
           <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Proprietor & Manufacturing Unit
+            Our Workshop & Proprietor
           </h2>
           <p className="text-xs sm:text-sm text-slate-400 max-w-xl mx-auto leading-relaxed">
-            Direct election merchandise production and wholesale dispatch based in Rajampet, Kadapa District, Andhra Pradesh.
+            Direct election merchandise manufacturing and wholesale dispatch based in Rajampet, Kadapa District, Andhra Pradesh.
           </p>
         </div>
 
@@ -66,11 +66,11 @@ export function ProprietorTrust() {
               <div className="p-3.5 rounded-2xl bg-slate-950/80 border border-slate-800 space-y-2">
                 <div className="flex items-center gap-2 text-xs text-slate-300">
                   <Award className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>100% Genuine Quality Manufacturing Guarantee</span>
+                  <span>100% Quality & Defect Replacement Guarantee</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-slate-300">
                   <ShieldCheck className="w-4 h-4 text-blue-400 shrink-0" />
-                  <span>Direct Factory Dispatches (Zero Middlemen)</span>
+                  <span>Direct Workshop Dispatches (Best Bulk Rates)</span>
                 </div>
               </div>
             </div>
@@ -98,7 +98,7 @@ export function ProprietorTrust() {
             <div className="space-y-3">
               <div className="flex items-center gap-2 text-amber-400 text-xs font-bold uppercase tracking-wider">
                 <MapPin className="w-4 h-4" />
-                <span>Registered Address & Dispatch Hub</span>
+                <span>Workshop Address & Dispatch Hub</span>
               </div>
 
               <div className="p-4 rounded-2xl bg-slate-950/90 border border-slate-800 space-y-1.5 text-sm text-slate-200">

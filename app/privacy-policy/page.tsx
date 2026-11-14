@@ -3,11 +3,11 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { ShieldCheck, ArrowLeft, Mail, Phone, MapPin, Lock } from 'lucide-react';
+import { ShieldCheck, ArrowLeft, Mail, Phone, MapPin } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | AdVibe Tech - Google & Meta Ads Policy Compliant',
-  description: 'Official Privacy Policy of AdVibe Tech (advibetech.top). Disclosing data collection, cookies, Meta Pixel, Google Ads tracking, and user privacy rights under the DPDP Act.',
+  title: 'Privacy Policy | AdVibe Tech',
+  description: 'Learn how AdVibe Tech protects your personal details, order specifications, and campaign artwork.',
 };
 
 export default function PrivacyPolicyPage() {
@@ -30,58 +30,58 @@ export default function PrivacyPolicyPage() {
         <div className="space-y-3 border-b border-slate-800 pb-6">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider">
             <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Digital Personal Data Protection (DPDP) & Ads Compliance</span>
+            <span>Customer Privacy & Data Protection</span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
             Privacy Policy
           </h1>
           <p className="text-xs sm:text-sm text-slate-400">
-            Effective Date: January 1, 2024 &bull; Last Updated: November 2026
+            Last Updated: November 2026 &bull; AdVibe Tech (advibetech.top)
           </p>
         </div>
 
-        {/* Legal Text Sections */}
+        {/* Content */}
         <div className="space-y-8 text-sm text-slate-300 leading-relaxed">
           {/* Section 1 */}
           <section className="space-y-3">
             <h2 className="text-lg font-bold text-white flex items-center gap-2">
               <span className="w-1.5 h-4 bg-amber-400 rounded-full inline-block" />
-              1. Introduction & Data Controller Information
+              1. Who We Are & Our Commitment to Your Privacy
             </h2>
             <p>
-              Welcome to <strong>AdVibe Tech</strong> (&ldquo;we,&rdquo; &ldquo;our,&rdquo; &ldquo;us,&rdquo; accessible at <a href="https://advibetech.top" className="text-amber-400 underline">advibetech.top</a>). We are a dedicated commercial printing and manufacturing enterprise specialized in customized political and election promotional merchandise (double-sided acrylic keychains, campaign T-shirts, mobile stickers, placards, badges) alongside digital advertising and marketing services.
+              Welcome to <strong>AdVibe Tech</strong>. We manufacture customized promotional items (such as double-sided acrylic keychains, campaign T-shirts, mobile back stickers, and placards) and offer digital marketing services across Andhra Pradesh, Telangana, and across India.
+            </p>
+            <p>
+              We treat your contact information and campaign materials with absolute confidentiality and respect. This page clearly explains what information we collect when you order or request a quote, how we use it, and how we keep it safe.
             </p>
             <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-1 text-xs">
-              <p><strong className="text-white">Legal Entity / Trade Name:</strong> AdVibe Tech</p>
-              <p><strong className="text-white">Proprietor & Founder:</strong> SURA DEVI PRASAD</p>
-              <p><strong className="text-white">Operational & Manufacturing Unit:</strong> 6/279 B, Balaji Nagar, Rajampet, Kadapa District, Andhra Pradesh - 516115, India</p>
-              <p><strong className="text-white">Official Contact Email:</strong> support@advibetech.com</p>
-              <p><strong className="text-white">Direct Phone / WhatsApp:</strong> +91 7075209795</p>
+              <p><strong className="text-white">Business Name:</strong> AdVibe Tech</p>
+              <p><strong className="text-white">Proprietor:</strong> SURA DEVI PRASAD</p>
+              <p><strong className="text-white">Workshop Address:</strong> 6/279 B, Balaji Nagar, Rajampet, Kadapa District, Andhra Pradesh - 516115</p>
+              <p><strong className="text-white">Phone & WhatsApp:</strong> +91 7075209795</p>
+              <p><strong className="text-white">Email:</strong> support@advibetech.com</p>
             </div>
-            <p>
-              This Privacy Policy details how we collect, store, handle, and protect your personal information when you visit our website, submit quotation requests, book merchandise, or interact with our digital marketing campaigns.
-            </p>
           </section>
 
           {/* Section 2 */}
           <section className="space-y-3">
             <h2 className="text-lg font-bold text-white flex items-center gap-2">
               <span className="w-1.5 h-4 bg-amber-400 rounded-full inline-block" />
-              2. Information We Collect
+              2. Information We Collect to Fulfill Your Order
             </h2>
-            <p>We only collect information necessary to provide customized quotations, fulfill printing orders, and manage client communications:</p>
+            <p>We only ask for details needed to create your design mockups and deliver your order:</p>
             <ul className="list-disc pl-5 space-y-2">
               <li>
-                <strong>Direct Inquiries & Order Submissions:</strong> Name of candidate or authorized contact person, 10-digit mobile number, village / mandal / district, election symbol name or specifications, color theme preference, item quantities, and special manufacturing instructions.
+                <strong>Contact Information:</strong> Your name or candidate name, mobile phone number, and delivery location (village, mandal, district).
               </li>
               <li>
-                <strong>Custom Artwork & Printing Assets:</strong> Candidate portraits, high-resolution photographs, party colors, logos, and authorized campaign slogans provided for printing on keychains, t-shirts, stickers, and placards.
+                <strong>Printing Assets:</strong> Candidate photos, election symbols, color preferences, and slogans you want printed on keychains, T-shirts, or stickers.
               </li>
               <li>
-                <strong>Automated Log Data:</strong> IP address, device type, operating system, browser version, pages visited, time spent, and referral sources, collected automatically for server security and analytics.
+                <strong>Order Specifications:</strong> Quantity required, sizes, packaging instructions, and delivery deadlines.
               </li>
               <li>
-                <strong>WhatsApp Messaging Data:</strong> When you initiate a chat with our proprietor via WhatsApp (+91 7075209795), your telephone number and message history are retained on encrypted WhatsApp Business endpoints to process your order.
+                <strong>WhatsApp Inquiries:</strong> When you message us on WhatsApp, your phone number and conversation are kept to help coordinate proofing and delivery.
               </li>
             </ul>
           </section>
@@ -90,40 +90,29 @@ export default function PrivacyPolicyPage() {
           <section className="space-y-3">
             <h2 className="text-lg font-bold text-white flex items-center gap-2">
               <span className="w-1.5 h-4 bg-amber-400 rounded-full inline-block" />
-              3. Cookies, Meta Pixel & Google Advertising Technologies
+              3. How We Use Your Details
             </h2>
-            <p>
-              In full compliance with <strong>Google Ads Policy</strong> and <strong>Meta Advertising Standards</strong>, we disclose our use of tracking technologies:
-            </p>
-            <ul className="list-disc pl-5 space-y-2">
-              <li>
-                <strong>Google Ads & Google Analytics:</strong> We may use Google Ads remarketing tags and conversion tracking cookies to analyze landing page traffic, detect click fraud, and optimize campaign performance. Google uses cookies to serve ads based on prior visits. You may opt out via Google Ads Settings.
-              </li>
-              <li>
-                <strong>Meta Pixel (Facebook & Instagram):</strong> We utilize the Meta Pixel and Conversions API to measure advertising effectiveness for election merchandise and digital marketing services. This helps us ensure that ads shown to prospective candidates and political workers are relevant and not repetitive.
-              </li>
-              <li>
-                <strong>Local Storage / Essential Cookies:</strong> We store minimal session identifiers, cookie consent status, and user UI preferences locally in your browser. These do not contain sensitive personal data.
-              </li>
+            <p>Your details are used exclusively to complete your requested services:</p>
+            <ul className="list-disc pl-5 space-y-1.5">
+              <li>Preparing accurate price estimates and digital sample mockups for your approval.</li>
+              <li>Printing, assembling, and packaging your custom merchandise.</li>
+              <li>Handing parcels over to RTC bus cargo or courier partners and sharing your tracking number.</li>
+              <li>Managing digital marketing campaigns if requested by you.</li>
+              <li>Providing GST or commercial bills for your campaign accounting.</li>
             </ul>
+            <p className="text-amber-400 font-semibold text-xs bg-amber-500/10 p-3 rounded-lg border border-amber-500/20">
+              * Privacy Guarantee: We never sell, rent, or share your phone number, voter lists, or candidate details with any third parties, other candidates, or brokers.
+            </p>
           </section>
 
           {/* Section 4 */}
           <section className="space-y-3">
             <h2 className="text-lg font-bold text-white flex items-center gap-2">
               <span className="w-1.5 h-4 bg-amber-400 rounded-full inline-block" />
-              4. How We Use Your Information
+              4. Cookies & Online Advertising
             </h2>
-            <p>We process your personal information strictly for legitimate commercial business purposes:</p>
-            <ul className="list-disc pl-5 space-y-1.5">
-              <li>Generating formal price quotes and preparing digital sample mockups for approval.</li>
-              <li>Manufacturing, custom laser-cutting, acrylic casing, and printing of ordered merchandise.</li>
-              <li>Dispatching consignments through logistics carriers (APSRTC Cargo, courier partners, India Post) and sharing tracking numbers.</li>
-              <li>Executing targeted digital ad campaigns (Meta ads, Instagram reels, WhatsApp outreach) requested by candidates.</li>
-              <li>Issuing GST/commercial invoices and complying with statutory tax obligations.</li>
-            </ul>
-            <p className="text-amber-400 font-semibold text-xs bg-amber-500/10 p-3 rounded-lg border border-amber-500/20">
-              * Zero Data Brokerage Guarantee: We do NOT sell, rent, lease, or trade candidate contact numbers, voter lists, or inquiries to any political parties, third-party marketing brokers, or advertising networks.
+            <p>
+              Like most modern websites, we use standard cookies to help our site load quickly and smoothly. We also run online ads on Google and Meta (Facebook and Instagram) to introduce our printing services to candidates and organizers looking for quality campaign merchandise. These tools help us show relevant ads and measure how visitors find us. You can adjust your browser cookie settings anytime.
             </p>
           </section>
 
@@ -131,65 +120,47 @@ export default function PrivacyPolicyPage() {
           <section className="space-y-3">
             <h2 className="text-lg font-bold text-white flex items-center gap-2">
               <span className="w-1.5 h-4 bg-amber-400 rounded-full inline-block" />
-              5. Data Sharing & Third-Party Processors
+              5. Sharing with Delivery Partners Only
             </h2>
-            <p>We share necessary data solely with the following trusted service providers:</p>
-            <ul className="list-disc pl-5 space-y-1.5">
-              <li><strong>Logistics & Freight Partners:</strong> APSRTC / TSRTC Cargo counters, DTDC, and postal services strictly to deliver packages to your village or town.</li>
-              <li><strong>WhatsApp & Meta:</strong> For facilitating instant customer communications and executing candidate-approved digital ads.</li>
-              <li><strong>Cloud & Hosting Infrastructure:</strong> Cloudflare and web servers for secure site delivery and DDoS protection.</li>
-              <li><strong>Law Enforcement / Statutory Authorities:</strong> If required by a lawful judicial order or statutory mandate under the Information Technology Act, 2000.</li>
-            </ul>
+            <p>
+              We only share your delivery name, address, and contact number with the delivery services transporting your parcel (such as APSRTC bus cargo, private express couriers, or India Post) so they can reach you without delay.
+            </p>
           </section>
 
           {/* Section 6 */}
           <section className="space-y-3">
             <h2 className="text-lg font-bold text-white flex items-center gap-2">
               <span className="w-1.5 h-4 bg-amber-400 rounded-full inline-block" />
-              6. Data Security & Storage
+              6. Your Choices & Data Rights
             </h2>
             <p>
-              We implement industry-standard administrative, physical, and technical safeguards (SSL/TLS HTTPS 256-bit encryption, restricted staff access, and secure local backups) to prevent unauthorized access, loss, or alteration of your artwork files and contact details.
+              You are always in control of your information. After your order is printed and delivered:
             </p>
+            <ul className="list-disc pl-5 space-y-1.5">
+              <li>You can ask us to delete your submitted photos, candidate graphics, and phone number from our systems.</li>
+              <li>You can contact us anytime if you need an updated invoice or want to change your saved delivery address.</li>
+            </ul>
           </section>
 
           {/* Section 7 */}
           <section className="space-y-3">
             <h2 className="text-lg font-bold text-white flex items-center gap-2">
               <span className="w-1.5 h-4 bg-amber-400 rounded-full inline-block" />
-              7. Your Rights Under Indian DPDP Act
+              7. Contact Us Directly
             </h2>
             <p>
-              Under the Digital Personal Data Protection Act, 2023 (DPDP Act) and the Information Technology (Reasonable Security Practices and Procedures and Sensitive Personal Data or Information) Rules, 2011, you have the right to:
+              If you have any questions about how your information or photos are handled, please contact our proprietor directly:
             </p>
-            <ul className="list-disc pl-5 space-y-1.5">
-              <li>Request a summary of your personal information collected by us.</li>
-              <li>Request correction or updating of any inaccurate contact details.</li>
-              <li>Request erasure of your artwork photos and contact details once your manufacturing order and delivery are complete.</li>
-              <li>Withdraw consent for receiving marketing or promotional communications at any time.</li>
-            </ul>
-          </section>
-
-          {/* Section 8 */}
-          <section className="space-y-3">
-            <h2 className="text-lg font-bold text-white flex items-center gap-2">
-              <span className="w-1.5 h-4 bg-amber-400 rounded-full inline-block" />
-              8. Grievance Officer & Contact Information
-            </h2>
-            <p>
-              If you have any questions, feedback, or grievance regarding our privacy practices or data handling, please contact our designated Grievance Officer:
-            </p>
-            <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-1.5 text-xs">
-              <p><strong className="text-white">Designated Officer:</strong> SURA DEVI PRASAD</p>
-              <p><strong className="text-white">Organization:</strong> AdVibe Tech</p>
-              <p><strong className="text-white">Address:</strong> 6/279 B, Balaji Nagar, Rajampet, Kadapa District, Andhra Pradesh - 516115</p>
-              <p><strong className="text-white">Email:</strong> <a href="mailto:support@advibetech.com" className="text-amber-400 underline">support@advibetech.com</a></p>
+            <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-1 text-xs">
+              <p><strong className="text-white">Contact Person:</strong> SURA DEVI PRASAD</p>
               <p><strong className="text-white">Phone / WhatsApp:</strong> <a href="tel:+917075209795" className="text-blue-400 underline">+91 7075209795</a></p>
+              <p><strong className="text-white">Email:</strong> <a href="mailto:support@advibetech.com" className="text-amber-400 underline">support@advibetech.com</a></p>
+              <p><strong className="text-white">Address:</strong> 6/279 B, Balaji Nagar, Rajampet, Kadapa Dist, AP - 516115</p>
             </div>
           </section>
         </div>
 
-        {/* Bottom CTA */}
+        {/* Footer Navigation */}
         <div className="pt-6 border-t border-slate-800 flex items-center justify-between">
           <Link href="/" className="text-xs text-amber-400 hover:underline">
             &larr; Return to Homepage
