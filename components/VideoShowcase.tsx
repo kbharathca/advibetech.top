@@ -7,7 +7,7 @@ import { useHaptic } from '@/hooks/useHaptic';
 export function VideoShowcase() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
   const { triggerLightTap } = useHaptic();
 
   const togglePlay = () => {
@@ -17,16 +17,32 @@ export function VideoShowcase() {
       videoRef.current.pause();
       setIsPlaying(false);
     } else {
-      videoRef.current.play();
-      setIsPlaying(true);
+      // Ensure unmuted playback with full audio
+      videoRef.current.muted = false;
+      videoRef.current.volume = 1.0;
+      setIsMuted(false);
+      videoRef.current
+        .play()
+        .then(() => {
+          setIsPlaying(true);
+        })
+        .catch(() => {
+          // Fallback if browser policy blocks unmuted play on initial touch
+          if (videoRef.current) {
+            videoRef.current.muted = true;
+            setIsMuted(true);
+            videoRef.current.play().then(() => setIsPlaying(true));
+          }
+        });
     }
   };
 
   const toggleMute = () => {
     triggerLightTap();
     if (!videoRef.current) return;
-    videoRef.current.muted = !isMuted;
-    setIsMuted(!isMuted);
+    const nextMuted = !isMuted;
+    videoRef.current.muted = nextMuted;
+    setIsMuted(nextMuted);
   };
 
   return (
@@ -52,10 +68,13 @@ export function VideoShowcase() {
             src="/video/campaign-video.mp4"
             playsInline
             loop
+            preload="metadata"
             muted={isMuted}
             poster="/assets/hero-presenter.jpg"
             className="w-full h-full object-cover cursor-pointer"
             onClick={togglePlay}
+            onPlay={() => setIsPlaying(true)}
+            onPause={() => setIsPlaying(false)}
           />
 
           {/* Top Bar with Live Badge & Mute Toggle */}
@@ -64,14 +83,25 @@ export function VideoShowcase() {
               ● Official Product Video
             </span>
             <button
+              type="button"
               onClick={(e) => {
                 e.stopPropagation();
                 toggleMute();
               }}
-              className="pointer-events-auto p-2 rounded-full bg-slate-950/70 text-white hover:bg-slate-900 backdrop-blur-md border border-white/20 transition-all active:scale-90"
-              aria-label="Toggle Audio"
+              className="pointer-events-auto flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-950/80 text-white hover:bg-slate-900 backdrop-blur-md border border-white/20 transition-all active:scale-90 shadow-lg"
+              aria-label={isMuted ? "Enable Sound" : "Mute Sound"}
             >
-              {isMuted ? <VolumeX className="w-4 h-4 text-red-400" /> : <Volume2 className="w-4 h-4 text-emerald-400" />}
+              {isMuted ? (
+                <>
+                  <VolumeX className="w-3.5 h-3.5 text-red-400" />
+                  <span className="text-[10px] font-bold text-red-300">Muted</span>
+                </>
+              ) : (
+                <>
+                  <Volume2 className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
+                  <span className="text-[10px] font-bold text-emerald-300">Audio On</span>
+                </>
+              )}
             </button>
           </div>
 
@@ -79,11 +109,15 @@ export function VideoShowcase() {
           {!isPlaying && (
             <div
               onClick={togglePlay}
-              className="absolute inset-0 bg-black/40 backdrop-blur-[2px] flex items-center justify-center cursor-pointer z-10 transition-opacity"
+              className="absolute inset-0 bg-black/40 backdrop-blur-[2px] flex flex-col items-center justify-center cursor-pointer z-10 transition-opacity gap-3"
             >
               <div className="w-16 h-16 rounded-full bg-amber-500 hover:bg-amber-400 text-slate-950 flex items-center justify-center shadow-xl shadow-amber-500/40 transform hover:scale-110 active:scale-95 transition-all">
                 <Play className="w-7 h-7 fill-current ml-1" />
               </div>
+              <span className="text-xs font-bold text-white bg-slate-950/85 px-3 py-1 rounded-full border border-white/20 backdrop-blur-md flex items-center gap-1.5 shadow">
+                <Volume2 className="w-3.5 h-3.5 text-emerald-400" />
+                Play with Audio
+              </span>
             </div>
           )}
 
