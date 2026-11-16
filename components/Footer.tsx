@@ -197,7 +197,7 @@ export function Footer() {
             <p>
               © {new Date().getFullYear()} AdVibe Tech (advibetech.top). All rights reserved. Proprietor: SURA DEVI PRASAD.
             </p>
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center justify-center gap-3">
               <Link href="/privacy-policy" className="hover:text-slate-300">Privacy Policy</Link>
               <span>•</span>
               <Link href="/terms" className="hover:text-slate-300">Terms of Service</Link>
@@ -210,6 +210,27 @@ export function Footer() {
               <span>•</span>
               <Link href="/contact" className="hover:text-slate-300">Contact</Link>
             </div>
+          </div>
+
+          {/* Designer & Presentation Credits */}
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-2 text-slate-400 text-[11px] pt-3 border-t border-slate-900/80 text-center sm:text-left">
+            <p>
+              Designed By{' '}
+              <a
+                href="https://tirupatihost.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-amber-400 hover:text-amber-300 font-semibold underline underline-offset-2 transition-colors"
+              >
+                Bharath Kattamanchi
+              </a>
+            </p>
+            <p className="text-slate-400 font-medium">
+              Proudly presented by{' '}
+              <span className="text-slate-200 font-bold">
+                DNJ IT SOLUTIONS PRIVATE LIMITED
+              </span>
+            </p>
           </div>
         </div>
       </div>
